@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Sample Tests Suite">
+
+    <!-- Staging or production run-->
+    <parameter name="environment" value="production"/>
+    <!--parameter name="environment" value="staging"/-->
+
+    <test name="Initialize and Tear Down of the web driver">
+        <classes>
+            <class name="com.helpers.InitTearDownDriver"/>
+        </classes>
+    </test>
+<!--    <test name="Heroku App Tests">-->
+<!--        <packages>-->
+<!--            <package name="com.tests.herokuApp"/>-->
+<!--        </packages>-->
+<!--    </test>-->
+    <test name="Working on -">
+        <classes>
+            <class name="com.tests.herokuApp.AddRemoveElementTest"/>
+        </classes>
+    </test>
+</suite>
