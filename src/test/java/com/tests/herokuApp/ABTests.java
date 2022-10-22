@@ -2,7 +2,7 @@ package com.tests.herokuApp;
 
 import gr.qa.heplerClasses.SetUp;
 import gr.qa.pages.herokuapp.ABTestingPage;
-import gr.qa.pages.herokuapp.enums.HerokuTestPages;
+import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.By;
 
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +26,7 @@ public class ABTests extends SetUp {
         abTestingPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPages.AB_TESTING.getLinkText())).click();
+        driver.findElement(By.linkText(HerokuTestPagesEnum.AB_TESTING.getLinkText())).click();
     }
 
     @AfterClass

@@ -1,9 +1,8 @@
 package com.tests.herokuApp;
 
 import gr.qa.heplerClasses.SetUp;
-import gr.qa.pages.herokuapp.AddRemoveElementPage;
 import gr.qa.pages.herokuapp.FileUploadPage;
-import gr.qa.pages.herokuapp.enums.HerokuTestPages;
+import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -27,7 +26,7 @@ public class FileUploadTest extends SetUp {
         fileUploadPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPages.FILE_UPLOAD.getLinkText())).click();
+        driver.findElement(By.linkText(HerokuTestPagesEnum.FILE_UPLOAD.getLinkText())).click();
     }
 
     @AfterClass

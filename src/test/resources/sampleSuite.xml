@@ -18,7 +18,7 @@
 <!--    </test>-->
     <test name="Working on -">
         <classes>
-            <class name="com.tests.herokuApp.FileDownloadTest"/>
+            <class name="com.tests.herokuApp.MultipleWindowsTest"/>
         </classes>
     </test>
 </suite>

@@ -1,6 +1,6 @@
 package gr.qa.pages.herokuapp.enums;
 
-public enum HerokuTestPages {
+public enum HerokuTestPagesEnum {
 
     AB_TESTING("A/B Testing"),
     ADD_REMOVE_ELEMENTS("Add/Remove Elements"),
@@ -50,7 +50,7 @@ public enum HerokuTestPages {
 
     private final String linkText;
 
-    HerokuTestPages(String text) {
+    HerokuTestPagesEnum(String text) {
         linkText = text;
     }
 

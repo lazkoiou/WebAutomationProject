@@ -1,4 +1,4 @@
-package gr.qa.pages.herokuapp.enums;
+package gr.qa.pages.herokuapp;
 
 import gr.qa.pages.BasePage;
 import org.openqa.selenium.WebElement;

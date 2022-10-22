@@ -1,9 +1,8 @@
 package com.tests.herokuApp;
 
 import gr.qa.heplerClasses.SetUp;
-import gr.qa.pages.herokuapp.FileUploadPage;
-import gr.qa.pages.herokuapp.enums.FileDownloadPage;
-import gr.qa.pages.herokuapp.enums.HerokuTestPages;
+import gr.qa.pages.herokuapp.FileDownloadPage;
+import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,7 +11,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
-import java.nio.file.Files;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -31,7 +29,7 @@ public class FileDownloadTest extends SetUp {
         fileDownloadPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPages.FILE_DOWNLOAD.getLinkText())).click();
+        driver.findElement(By.linkText(HerokuTestPagesEnum.FILE_DOWNLOAD.getLinkText())).click();
     }
 
     @AfterClass
