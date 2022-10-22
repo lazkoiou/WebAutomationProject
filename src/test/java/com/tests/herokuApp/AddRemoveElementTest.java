@@ -17,26 +17,43 @@ public class AddRemoveElementTest extends SetUp {
     private final static Logger logger = LogManager.getLogger(AddRemoveElementTest.class);
 
     String homepageURL = "https://the-internet.herokuapp.com/";
+    AddRemoveElementPage addRemoveElementPage = new AddRemoveElementPage();
 
-    @Test
-    void addRemoveElementTest() {
-        logger.info("Starting test case addRemoveElementTest...");
-        AddRemoveElementPage addRemoveElementPage = new AddRemoveElementPage();
+    @BeforeClass
+    public void testSetup() {
+        logger.info("* Test class: " + getClass() + " - Starting...");
         addRemoveElementPage.setDriverInitElements(driver);
-
         // open homepage and go to the testing page
         driver.get(homepageURL);
         driver.findElement(By.linkText(HerokuTestPages.ADD_REMOVE_ELEMENTS.getLinkText())).click();
+    }
+
+    @AfterClass
+    public void testTearDown() {
+        logger.info("* Test class: " + getClass() + " - Ending...");
+    }
+
+    @Test(priority = 1)
+    public void addElementTest() {
+        logger.info("** Test case: addElementTest - Starting...");
 
         // create a new element
         addRemoveElementPage.getAddElementButton().click();
         assertFalse(driver.findElements(By.cssSelector(".example .added-manually")).isEmpty());
 
+        logger.info("** Test case: addElementTest - Ending...");
+    }
+
+    @Test(priority = 2, dependsOnMethods = "addElementTest")
+    public void removeElementTest() {
+        logger.info("** Test case: removeElementTest - Starting...");
+
         // delete the element we created
         addRemoveElementPage.getDeleteElementButton().click();
         assertTrue(driver.findElements(By.cssSelector(".example .added-manually")).isEmpty());
 
-        logger.info("Ended test case addRemoveElementTest.");
+
+        logger.info("** Test case: removeElementTest - Ending...");
     }
 
 }

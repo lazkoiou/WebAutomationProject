@@ -11,6 +11,7 @@ import org.testng.ITestContext;
 import org.testng.Reporter;
 import org.testng.annotations.Parameters;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -43,6 +44,12 @@ public class SetUp extends BaseObject {
     public ChromeOptions setupChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
+        // the 5 lines below are needed for the FileDownloadTest
+        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\testFiles\\downloaded";
+        logger.info("Setting default download filepath: " + filePath);
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", filePath);
+        options.setExperimentalOption("prefs", prefs);
         return options;
     }
 
