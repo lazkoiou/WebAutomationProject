@@ -13,9 +13,9 @@ import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
-public class FrameTests extends SetUp {
+public class FrameTest extends SetUp {
 
-    private final static Logger logger = LogManager.getLogger(FrameTests.class);
+    private final static Logger logger = LogManager.getLogger(FrameTest.class);
 
     String homepageURL = "https://the-internet.herokuapp.com/";
     FrameInitialPage frameInitialPage = new FrameInitialPage();

@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class ABTests extends SetUp {
+public class ABTest extends SetUp {
 
-    private final static Logger logger = LogManager.getLogger(ABTests.class);
+    private final static Logger logger = LogManager.getLogger(ABTest.class);
 
     String homepageURL = "https://the-internet.herokuapp.com/";
     ABTestingPage abTestingPage = new ABTestingPage();
