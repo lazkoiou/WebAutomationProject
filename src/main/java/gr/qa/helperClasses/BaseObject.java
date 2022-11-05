@@ -1,4 +1,4 @@
-package gr.qa.heplerClasses;
+package gr.qa.helperClasses;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

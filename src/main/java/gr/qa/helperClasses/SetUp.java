@@ -1,4 +1,4 @@
-package gr.qa.heplerClasses;
+package gr.qa.helperClasses;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
@@ -7,14 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.ITestContext;
-import org.testng.Reporter;
-import org.testng.annotations.Parameters;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class SetUp extends BaseObject {
 

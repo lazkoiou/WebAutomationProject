@@ -1,6 +1,7 @@
 package com.tests.herokuApp;
 
-import gr.qa.heplerClasses.SetUp;
+import gr.qa.helperClasses.SetUp;
+import gr.qa.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.BasicAuthPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -8,10 +9,12 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+@Listeners(TestMethodCapture.class)
 public class BasicAuthTest extends SetUp {
 
     private final static Logger logger = LogManager.getLogger(NotificationMessageRetryActionsTest.class);
@@ -39,13 +42,13 @@ public class BasicAuthTest extends SetUp {
 
     @Test
     public void basicAuthByHttpPrefix() {
-        logger.info("** Test case: basicAuthByHttpPrefix - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         String urlWithLoginPrefix = basicAuthUrl.replace("https://", "http://" + username + ":" + password + "@");
         driver.get(urlWithLoginPrefix);
         assertEquals(basicAuthPage.getPageMessage().getText(), expectedMessage);
 
-        logger.info("** Test case: basicAuthByHttpPrefix - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

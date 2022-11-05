@@ -1,4 +1,4 @@
-package gr.qa.heplerClasses;
+package gr.qa.helperClasses;
 
 import org.openqa.selenium.WebElement;
 

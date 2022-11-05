@@ -1,11 +1,10 @@
 package com.helpers;
 
-import gr.qa.heplerClasses.SetUp;
+import gr.qa.helperClasses.SetUp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
 
 public class InitTearDownDriver extends SetUp {
 

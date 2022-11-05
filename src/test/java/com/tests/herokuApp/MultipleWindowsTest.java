@@ -1,6 +1,7 @@
 package com.tests.herokuApp;
 
-import gr.qa.heplerClasses.SetUp;
+import gr.qa.helperClasses.SetUp;
+import gr.qa.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import gr.qa.pages.herokuapp.multipleWindows.MultipleWindowsPage;
 import gr.qa.pages.herokuapp.multipleWindows.NewMultipleWindowsPage;
@@ -9,11 +10,13 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 
+@Listeners(TestMethodCapture.class)
 public class MultipleWindowsTest extends SetUp {
 
     private final static Logger logger = LogManager.getLogger(MultipleWindowsTest.class);
@@ -38,14 +41,14 @@ public class MultipleWindowsTest extends SetUp {
 
     @Test
     void openNewWindowTest() {
-        logger.info("** Test case: openNewWindowTest - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         String firstTab = driver.getWindowHandle();
         multipleWindowsPage.openNewWindowAndSwitchToIt(firstTab);
         assertEquals(newMultipleWindowsPage.getNewWindowHeader().getText(), "New Window");
         multipleWindowsPage.closeNewWindowAndSwitchToPrevious(firstTab);
 
-        logger.info("** Test case: openNewWindowTest - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

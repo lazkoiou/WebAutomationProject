@@ -1,6 +1,7 @@
 package com.tests.herokuApp;
 
-import gr.qa.heplerClasses.SetUp;
+import gr.qa.helperClasses.SetUp;
+import gr.qa.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import gr.qa.pages.herokuapp.framePages.FrameInitialPage;
 import gr.qa.pages.herokuapp.framePages.NestedFramesPage;
@@ -13,6 +14,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
+@Listeners(TestMethodCapture.class)
 public class FrameTest extends SetUp {
 
     private final static Logger logger = LogManager.getLogger(FrameTest.class);
@@ -44,47 +46,47 @@ public class FrameTest extends SetUp {
 
     @Test(priority = 1)
     public void nestedFramesVerifyTopLeftTest() {
-        logger.info("** Test case: nestedFramesVerifyTopLeftTest - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         frameInitialPage.getNestedFramesLink().click();
         assertEquals(nestedFramesPage.findTopLeftFrameHeader(), "LEFT");
 
-        logger.info("** Test case: nestedFramesVerifyTopLeftTest - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyTopMiddleTest() {
-        logger.info("** Test case: nestedFramesVerifyTopMiddleTest - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         frameInitialPage.getNestedFramesLink().click();
         assertEquals(nestedFramesPage.findTopMiddleFrameHeader(), "MIDDLE");
 
-        logger.info("** Test case: nestedFramesVerifyTopMiddleTest - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyTopRightTest() {
-        logger.info("** Test case: nestedFramesVerifyTopRightTest - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         frameInitialPage.getNestedFramesLink().click();
         assertEquals(nestedFramesPage.findTopRightFrameHeader(), "RIGHT");
 
-        logger.info("** Test case: nestedFramesVerifyTopRightTest - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyBottomTest() {
-        logger.info("** Test case: nestedFramesVerifyBottomTest - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         frameInitialPage.getNestedFramesLink().click();
         assertEquals(nestedFramesPage.findBottomFrameHeader(), "BOTTOM");
 
-        logger.info("** Test case: nestedFramesVerifyBottomTest - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
     
     @Test(priority = 2)
     public void iFrameTest() {
-        logger.info("** Test case: iFrameTest - Starting...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
 
         frameInitialPage.getiFrameLink().click();
         driver.switchTo().frame("mce_0_ifr");
@@ -93,7 +95,7 @@ public class FrameTest extends SetUp {
         String afterText = iFramePage.getEditorText().getText();
         assertNotEquals(beforeText, afterText);
 
-        logger.info("** Test case: iFrameTest - Ending...");
+        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }
