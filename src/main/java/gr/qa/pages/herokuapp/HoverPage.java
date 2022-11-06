@@ -22,6 +22,11 @@ public class HoverPage extends BasePage {
         return userProfileFigures;
     }
 
+    /**
+     * Iteratively hovers over the profile user image so that the username appears.
+     * Extracts the username and adds it on a list.
+     * @return : a list with profile usernames that have been extracted
+     */
     public List<String> hoverAndGetUsername() {
         List<String> profileUsernames = new ArrayList<>();
         userProfileFigures.forEach(userProfileFigure -> {
