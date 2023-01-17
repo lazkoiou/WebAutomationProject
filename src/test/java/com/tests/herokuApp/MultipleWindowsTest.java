@@ -41,14 +41,10 @@ public class MultipleWindowsTest extends SetUp {
 
     @Test
     void openNewWindowTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         String firstTab = driver.getWindowHandle();
         multipleWindowsPage.openNewWindowAndSwitchToIt(firstTab);
         assertEquals(newMultipleWindowsPage.getNewWindowHeader().getText(), "New Window");
         multipleWindowsPage.closeNewWindowAndSwitchToPrevious(firstTab);
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

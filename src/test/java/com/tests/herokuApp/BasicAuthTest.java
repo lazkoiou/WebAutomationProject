@@ -42,13 +42,9 @@ public class BasicAuthTest extends SetUp {
 
     @Test
     public void basicAuthByHttpPrefix() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         String urlWithLoginPrefix = basicAuthUrl.replace("https://", "http://" + username + ":" + password + "@");
         driver.get(urlWithLoginPrefix);
         assertEquals(basicAuthPage.getPageMessage().getText(), expectedMessage);
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

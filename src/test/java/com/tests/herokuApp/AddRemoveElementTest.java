@@ -36,25 +36,16 @@ public class AddRemoveElementTest extends SetUp {
 
     @Test(priority = 1)
     public void addElementTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         // create a new element
         addRemoveElementPage.getAddElementButton().click();
         assertFalse(driver.findElements(By.cssSelector(".example .added-manually")).isEmpty());
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
     @Test(priority = 2, dependsOnMethods = "addElementTest")
     public void removeElementTest() {
-        logger.info("** Test case: removeElementTest - Starting...");
-
         // delete the element we created
         addRemoveElementPage.getDeleteElementButton().click();
         assertTrue(driver.findElements(By.cssSelector(".example .added-manually")).isEmpty());
-
-
-        logger.info("** Test case: removeElementTest - Ending...");
     }
 
 }

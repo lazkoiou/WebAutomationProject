@@ -59,8 +59,6 @@ public class DynamicLoadingTest extends SetUp {
      */
     @Test
     void hiddenElementOnPageTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         dynamicLoadingPage.getHiddenElementExampleLink().click();
         dynamicLoadingHiddenElementPage.getStartButton().click();
 
@@ -68,8 +66,6 @@ public class DynamicLoadingTest extends SetUp {
         wait.until(ExpectedConditions.visibilityOf(dynamicLoadingHiddenElementPage.getUnhiddenText()));
 
         assertEquals(dynamicLoadingHiddenElementPage.getUnhiddenText().getText(), expectedUnhiddenText);
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
     /**
@@ -79,8 +75,6 @@ public class DynamicLoadingTest extends SetUp {
      */
     @Test
     void elementRenderedAfterTheFactTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         dynamicLoadingPage.getElementRenderedAfterwardsExampleLink().click();
         dynamicLoadingElementRenderedAfterTheFactPage.getStartButton().click();
 
@@ -88,8 +82,6 @@ public class DynamicLoadingTest extends SetUp {
         wait.until(ExpectedConditions.visibilityOf(dynamicLoadingHiddenElementPage.getUnhiddenText()));
 
         assertEquals(dynamicLoadingHiddenElementPage.getUnhiddenText().getText(), expectedUnhiddenText);
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

@@ -43,14 +43,10 @@ public class ABTest extends SetUp {
      */
     @Test
     void optOutUrlTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         // add optOutUrl, refresh and accept the js alert
         driver.get(driver.getCurrentUrl() + "?optimizely_opt_out=true");
         driver.switchTo().alert().accept();
         assertEquals(abTestingPage.getHeading().getText(), "No A/B Test");
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

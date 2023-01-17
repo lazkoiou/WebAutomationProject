@@ -39,11 +39,7 @@ public class NotificationMessageRetryActionsTest extends SetUp {
 
     @Test
     void retryActionUntilSuccessfulMessageTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         assertTrue(notificationMessagePage.retryIfActionUnsuccessful());
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

@@ -41,8 +41,6 @@ public class FileDownloadTest extends SetUp {
 
     @Test
     void fileDownloadTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         // download a file and verify
         fileDownloadPage.getFileToDownload().click();
         String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\testFiles\\downloaded";
@@ -52,8 +50,6 @@ public class FileDownloadTest extends SetUp {
 
         // delete the previously downloaded file and verify
         assertTrue(downloadedFile.delete());
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

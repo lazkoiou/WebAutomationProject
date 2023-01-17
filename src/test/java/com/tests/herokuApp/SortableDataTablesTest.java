@@ -42,16 +42,12 @@ public class SortableDataTablesTest extends SetUp {
 
     @Test
     void noAttributesSortableTableTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         // click on the "Due" header to sort table based on this column
         sortableDataTablesPage.getDueColumnHeader().click();
 
         List<Double> dueList = sortableDataTablesPage.makeListOfDueValues();
         logger.info("List: " + dueList);
         assertTrue(sortableDataTablesPage.verifyAscendingSorting(dueList));
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

@@ -39,16 +39,12 @@ public class FileUploadTest extends SetUp {
 
     @Test
     void fileUploadTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         // upload a file and verify
         String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\testFiles\\testText.txt";
         logger.info("Filepath to file to be uploaded is: " + filePath);
         fileUploadPage.getBrowseFile().sendKeys(filePath);
         fileUploadPage.getFileSubmitButton().click();
         assertEquals(fileUploadPage.getSuccessMessage().getText(), "File Uploaded!");
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

@@ -39,12 +39,8 @@ public class DropdownTest extends SetUp {
 
     @Test
     void selectOption1FromDropdownTest() {
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Starting...");
-
         dropdownPage.selectOptionFromDropdown("Option 1");
         assertEquals(dropdownPage.getTextFromSelectedOption(), "Option 1");
-
-        logger.info("** Test case: " + TestMethodCapture.getTestMethod().getMethodName() + " - Ending...");
     }
 
 }

@@ -2,6 +2,10 @@
 
 <suite name="Sample Tests Suite">
 
+    <listeners>
+        <listener class-name="gr.qa.helperClasses.listeners.TestListener"/>
+    </listeners>
+
     <!-- Staging or production run-->
     <parameter name="environment" value="production"/>
     <!--parameter name="environment" value="staging"/-->
@@ -11,14 +15,19 @@
             <class name="com.helpers.InitTearDownDriver"/>
         </classes>
     </test>
-<!--    <test name="Heroku App Tests">-->
-<!--        <packages>-->
-<!--            <package name="com.tests.herokuApp"/>-->
-<!--        </packages>-->
-<!--    </test>-->
+    <test name="Heroku App Tests">
+        <packages>
+            <package name="com.tests.herokuApp"/>
+        </packages>
+    </test>
+    <test name="Annotated Tests">
+        <packages>
+            <package name="com.tests.annotated"/>
+        </packages>
+    </test>
     <test name="Working on -">
         <classes>
-            <class name="com.tests.herokuApp.BasicAuthTest"/>
+            <class name="com.tests.herokuApp.HoverTest"/>
         </classes>
     </test>
 </suite>

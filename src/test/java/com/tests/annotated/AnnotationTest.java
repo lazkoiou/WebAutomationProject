@@ -1,6 +1,7 @@
-package com.tests.herokuApp;
+package com.tests.annotated;
 
 import gr.qa.helperClasses.SetUp;
+import gr.qa.helperClasses.annotations.Environment;
 import gr.qa.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.HoverPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
@@ -17,20 +18,13 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
-public class HoverTest extends SetUp {
+public class AnnotationTest extends SetUp {
 
-    private final static Logger logger = LogManager.getLogger(HoverTest.class);
-
-    String homepageURL = "https://the-internet.herokuapp.com/";
-    HoverPage hoverPage = new HoverPage();
+    private final static Logger logger = LogManager.getLogger(AnnotationTest.class);
 
     @BeforeClass
     public void testSetup() {
         logger.info("* Test class: " + getClass() + " - Starting...");
-        hoverPage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.HOVERS.getLinkText())).click();
     }
 
     @AfterClass
@@ -39,13 +33,15 @@ public class HoverTest extends SetUp {
     }
 
     @Test
-    void hoverProfileNamesTest() {
-        List<String> profileUsernames = hoverPage.hoverAndGetUsername();
-        logger.info("User profiles: " + profileUsernames);
+    @Environment(runIn = {"production"})
+    void productionAnnotatedTest() {
+        logger.info("This test runs only in production!");
+    }
 
-        assertEquals(profileUsernames.get(0), "user1");
-        assertEquals(profileUsernames.get(1), "user2");
-        assertEquals(profileUsernames.get(2), "user3");
+    @Test
+    @Environment(runIn = {"staging"})
+    void stagingAnnotatedTest() {
+        logger.info("This test runs only in staging!");
     }
 
 }
