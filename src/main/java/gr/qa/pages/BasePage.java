@@ -2,6 +2,7 @@ package gr.qa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Base class for the web pages
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
 
     public static WebDriver driver;
+    private WebDriverWait wait;
 
     /**
      * Constructor
@@ -17,6 +19,7 @@ public class BasePage {
      */
     public void setDriverInitElements(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
         PageFactory.initElements(driver, this);
     }
 

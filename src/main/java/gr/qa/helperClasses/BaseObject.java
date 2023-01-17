@@ -40,7 +40,7 @@ public class BaseObject {
      * Finds out the environment either from Jenkins or from the xml
      * @return : the environment as a String
      */
-    public String getEnvironment() {
+    public static String getEnvironment() {
         ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
         if (System.getenv("environment") != null) { // if we pass it from Jenkins
             return System.getenv("environment");

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.ITestContext;
+import org.testng.Reporter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,6 +75,28 @@ public class SetUp extends BaseObject {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * This method returns the browser used
+     */
+    public String getBrowser() {
+        String browser;
+        ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
+        // First check if we pass it as a test parameter
+        if (iTestContext.getCurrentXmlTest().getParameter("browser") != null) {
+            browser= iTestContext.getCurrentXmlTest().getParameter("browser");
+        }
+        // Else, check if we pass it from Jenkins
+        else if (System.getenv("browser") != null) {
+            browser = System.getenv("browser");
+        }
+        // Lastly, take the browser from the properties file
+        else {
+            browser = properties.getProperty("browser");
+        }
+        logger.info("Browser is: " + browser);
+        return browser;
     }
 
 }
