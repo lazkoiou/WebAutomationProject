@@ -44,7 +44,20 @@
             <version>5.0.2</version>
             <scope>compile</scope>
         </dependency>
+        <!-- AWS -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.12.388</version>
+        </dependency>
+        <!-- To be able to send emails -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
