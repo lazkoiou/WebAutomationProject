@@ -22,7 +22,7 @@
     </test>
     <test name="Annotated Tests">
         <packages>
-            <package name="com.tests.annotated"/>
+            <package name="com.tests.usefulActions.annotated"/>
         </packages>
     </test>
     <test name="Working on -">
