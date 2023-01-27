@@ -23,4 +23,15 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * Sleeps for given ms
+     */
+    public void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

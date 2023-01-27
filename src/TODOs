@@ -2,7 +2,7 @@ TODOS:
 This project:
 1. Remove staging and production
 2. Change structure of BaseObject probably to static instead of extending
-3. Add screenshot functionality
+3. Investigate why screenshot is not attached to allure reports
 
 
 Sample project:
