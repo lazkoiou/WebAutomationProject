@@ -68,4 +68,16 @@ public class BaseObject {
         }
     }
 
+    /**
+     * Sleeps for given time in ms
+     * @param ms : milliseconds
+     */
+    public static void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

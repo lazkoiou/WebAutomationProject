@@ -26,14 +26,14 @@
             <package name="com.tests.usefulActions.annotated"/>
         </packages>
     </test>
-    <test name="Screenshot on Failed Test">
+    <test name="Screenshot and Video Recording on Failed Test">
         <classes>
-            <class name="com.tests.usefulActions.ScreenshotOnFailedTest"/>
+            <class name="com.tests.usefulActions.ScreenshotAndVideoRecordingOnFailedTest"/>
         </classes>
     </test>
-<!--    <test name="Working on -">-->
-<!--        <classes>-->
-<!--            <class name="com.tests.usefulActions.ScreenshotOnFailedTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Working on -">
+        <classes>
+            <class name="com.tests.herokuApp.HoverTest"/>
+        </classes>
+    </test>
 </suite>

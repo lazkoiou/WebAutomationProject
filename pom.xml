@@ -79,6 +79,18 @@
             <version>1.9.5</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- Needed to record videos -->
+        <dependency>
+            <groupId>com.pojosontheweb</groupId>
+            <artifactId>monte-repack</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!-- Also needed to record videos -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.2.2</version>
+        </dependency>
     </dependencies>
 
 

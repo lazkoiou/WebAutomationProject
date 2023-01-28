@@ -62,19 +62,8 @@ public class SetUp extends BaseObject {
      * Quits the web driver
      */
     public void tearDownDriver() {
+        logger.info("Tearing down web driver.\n");
         driver.quit();
-    }
-
-    /**
-     * Sleeps for given amount of ms
-     * @param ms : ms to sleep
-     */
-    public void sleep(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

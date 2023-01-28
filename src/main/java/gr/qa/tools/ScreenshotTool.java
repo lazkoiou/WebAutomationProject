@@ -2,7 +2,6 @@ package gr.qa.tools;
 
 import com.google.common.io.Files;
 import gr.qa.helperClasses.SetUp;
-import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,9 +13,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class QaTools {
+public class ScreenshotTool {
 
-    private final static Logger logger = LogManager.getLogger(QaTools.class);
+    private final static Logger logger = LogManager.getLogger(ScreenshotTool.class);
 
     /**
      * Takes a screenshot and returns it
@@ -29,9 +28,9 @@ public class QaTools {
             SimpleDateFormat sdfFolder = new SimpleDateFormat("yyyy_MM_dd");
             String formattedDateImage = sdfImage.format(new Date());
             String formattedDateFolder = sdfFolder.format(new Date());
-            String pathname = "src/main/resources/images/";
+            String path = "src/main/resources/images/";
             String namePrefix = "images_";
-            String filepath = pathname + namePrefix + formattedDateFolder + "/" + testName + "_" + formattedDateImage + ".png";
+            String filepath = path + namePrefix + formattedDateFolder + "/" + testName + "_" + formattedDateImage + ".png";
             File src = ((TakesScreenshot) SetUp.driver).getScreenshotAs(OutputType.FILE);
             logger.info("Screenshot taken: " + filepath);
             try {
