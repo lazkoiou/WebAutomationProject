@@ -1,4 +1,4 @@
-package com.tests.usefulActions;
+package com.tests.web.usefulActions;
 
 import gr.qa.helperClasses.SetUp;
 import org.apache.logging.log4j.LogManager;

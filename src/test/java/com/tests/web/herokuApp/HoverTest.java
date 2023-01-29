@@ -1,8 +1,8 @@
-package com.tests.herokuApp;
+package com.tests.web.herokuApp;
 
 import gr.qa.helperClasses.SetUp;
 import gr.qa.listeners.TestMethodCapture;
-import gr.qa.pages.herokuapp.NotificationMessagePage;
+import gr.qa.pages.herokuapp.HoverPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,24 +12,25 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertTrue;
+import java.util.List;
 
+import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
-public class NotificationMessageRetryActionsTest extends SetUp {
+public class HoverTest extends SetUp {
 
-    private final static Logger logger = LogManager.getLogger(NotificationMessageRetryActionsTest.class);
+    private final static Logger logger = LogManager.getLogger(HoverTest.class);
 
     String homepageURL = "https://the-internet.herokuapp.com/";
-    NotificationMessagePage notificationMessagePage = new NotificationMessagePage();
+    HoverPage hoverPage = new HoverPage();
 
     @BeforeClass
     public void testSetup() {
         logger.info("* Test class: " + getClass() + " - Starting...");
-        notificationMessagePage.setDriverInitElements(driver);
+        hoverPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.NOTIFICATION_MESSAGES.getLinkText())).click();
+        driver.findElement(By.linkText(HerokuTestPagesEnum.HOVERS.getLinkText())).click();
     }
 
     @AfterClass
@@ -38,8 +39,13 @@ public class NotificationMessageRetryActionsTest extends SetUp {
     }
 
     @Test
-    void retryActionUntilSuccessfulMessageTest() {
-        assertTrue(notificationMessagePage.retryIfActionUnsuccessful());
+    void hoverProfileNamesTest() {
+        List<String> profileUsernames = hoverPage.hoverAndGetUsername();
+        logger.info("User profiles: " + profileUsernames);
+
+        assertEquals(profileUsernames.get(0), "user1");
+        assertEquals(profileUsernames.get(1), "user2");
+        assertEquals(profileUsernames.get(2), "user3");
     }
 
 }

@@ -1,4 +1,4 @@
-package com.tests.usefulActions.annotated;
+package com.tests.web.usefulActions.annotated;
 
 import gr.qa.helperClasses.SetUp;
 import gr.qa.helperClasses.annotations.Environment;

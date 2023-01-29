@@ -1,8 +1,8 @@
-package com.tests.herokuApp;
+package com.tests.web.herokuApp;
 
 import gr.qa.helperClasses.SetUp;
 import gr.qa.listeners.TestMethodCapture;
-import gr.qa.pages.herokuapp.HoverPage;
+import gr.qa.pages.herokuapp.SortableDataTablesPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,22 +15,23 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 @Listeners(TestMethodCapture.class)
-public class HoverTest extends SetUp {
+public class SortableDataTablesTest extends SetUp {
 
-    private final static Logger logger = LogManager.getLogger(HoverTest.class);
+    private final static Logger logger = LogManager.getLogger(SortableDataTablesTest.class);
 
     String homepageURL = "https://the-internet.herokuapp.com/";
-    HoverPage hoverPage = new HoverPage();
+    SortableDataTablesPage sortableDataTablesPage = new SortableDataTablesPage();
 
     @BeforeClass
     public void testSetup() {
         logger.info("* Test class: " + getClass() + " - Starting...");
-        hoverPage.setDriverInitElements(driver);
+        sortableDataTablesPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.HOVERS.getLinkText())).click();
+        driver.findElement(By.linkText(HerokuTestPagesEnum.SORTABLE_DATA_TABLES.getLinkText())).click();
     }
 
     @AfterClass
@@ -39,13 +40,13 @@ public class HoverTest extends SetUp {
     }
 
     @Test
-    void hoverProfileNamesTest() {
-        List<String> profileUsernames = hoverPage.hoverAndGetUsername();
-        logger.info("User profiles: " + profileUsernames);
+    void noAttributesSortableTableTest() {
+        // click on the "Due" header to sort table based on this column
+        sortableDataTablesPage.getDueColumnHeader().click();
 
-        assertEquals(profileUsernames.get(0), "user1");
-        assertEquals(profileUsernames.get(1), "user2");
-        assertEquals(profileUsernames.get(2), "user3");
+        List<Double> dueList = sortableDataTablesPage.makeListOfDueValues();
+        logger.info("List: " + dueList);
+        assertTrue(sortableDataTablesPage.verifyAscendingSorting(dueList));
     }
 
 }

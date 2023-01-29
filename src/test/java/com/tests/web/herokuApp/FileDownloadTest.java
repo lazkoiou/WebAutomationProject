@@ -1,4 +1,4 @@
-package com.tests.herokuApp;
+package com.tests.web.herokuApp;
 
 import gr.qa.helperClasses.SetUp;
 import gr.qa.listeners.TestMethodCapture;

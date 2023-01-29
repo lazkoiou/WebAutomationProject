@@ -1,8 +1,8 @@
-package com.tests.herokuApp;
+package com.tests.web.herokuApp;
 
 import gr.qa.helperClasses.SetUp;
 import gr.qa.listeners.TestMethodCapture;
-import gr.qa.pages.herokuapp.FileUploadPage;
+import gr.qa.pages.herokuapp.DropdownPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,20 +16,20 @@ import static org.testng.Assert.assertEquals;
 
 
 @Listeners(TestMethodCapture.class)
-public class FileUploadTest extends SetUp {
+public class DropdownTest extends SetUp {
 
-    private final static Logger logger = LogManager.getLogger(FileUploadTest.class);
+    private final static Logger logger = LogManager.getLogger(DropdownTest.class);
 
     String homepageURL = "https://the-internet.herokuapp.com/";
-    FileUploadPage fileUploadPage = new FileUploadPage();
+    DropdownPage dropdownPage = new DropdownPage();
 
     @BeforeClass
     public void testSetup() {
         logger.info("* Test class: " + getClass() + " - Starting...");
-        fileUploadPage.setDriverInitElements(driver);
+        dropdownPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.FILE_UPLOAD.getLinkText())).click();
+        driver.findElement(By.linkText(HerokuTestPagesEnum.DROPDOWN.getLinkText())).click();
     }
 
     @AfterClass
@@ -38,13 +38,9 @@ public class FileUploadTest extends SetUp {
     }
 
     @Test
-    void fileUploadTest() {
-        // upload a file and verify
-        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\testFiles\\testText.txt";
-        logger.info("Filepath to file to be uploaded is: " + filePath);
-        fileUploadPage.getBrowseFile().sendKeys(filePath);
-        fileUploadPage.getFileSubmitButton().click();
-        assertEquals(fileUploadPage.getSuccessMessage().getText(), "File Uploaded!");
+    void selectOption1FromDropdownTest() {
+        dropdownPage.selectOptionFromDropdown("Option 1");
+        assertEquals(dropdownPage.getTextFromSelectedOption(), "Option 1");
     }
 
 }

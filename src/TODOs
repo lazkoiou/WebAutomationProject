@@ -1,11 +1,10 @@
 TODOS:
 This project:
-1. Remove staging and production
-2. Change structure of BaseObject probably to static instead of extending
-3. Investigate why screenshot is not attached to allure reports
-
+1. Change structure of BaseObject probably to static instead of extending
+2. Investigate why screenshot and video recordings are not attached to allure reports
+3.
 
 Sample project:
-a. Make the changes (2, 3) to the SampleProject as well
+a. Make the changes (1, 2) to the SampleProject as well
 b. Add the listener and the implementation of getting the testMethod name to
 the SampleProject as well

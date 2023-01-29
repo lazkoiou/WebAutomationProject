@@ -18,22 +18,22 @@
     </test>
     <test name="Heroku App Tests">
         <packages>
-            <package name="com.tests.herokuApp"/>
+            <package name="com.tests.web.herokuApp"/>
         </packages>
     </test>
     <test name="Annotated Tests">
         <packages>
-            <package name="com.tests.usefulActions.annotated"/>
+            <package name="com.tests.web.usefulActions.annotated"/>
         </packages>
     </test>
     <test name="Screenshot and Video Recording on Failed Test">
         <classes>
-            <class name="com.tests.usefulActions.ScreenshotAndVideoRecordingOnFailedTest"/>
+            <class name="com.tests.web.usefulActions.ScreenshotAndVideoRecordingOnFailedTest"/>
         </classes>
     </test>
     <test name="Working on -">
         <classes>
-            <class name="com.tests.herokuApp.HoverTest"/>
+            <class name="com.tests.web.herokuApp.HoverTest"/>
         </classes>
     </test>
 </suite>
