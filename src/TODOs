@@ -2,7 +2,7 @@ TODOS:
 This project:
 1. Change structure of BaseObject probably to static instead of extending
 2. Investigate why screenshot and video recordings are not attached to allure reports
-3.
+3. Add descriptions and author to test classes
 
 Sample project:
 a. Make the changes (1, 2) to the SampleProject as well

@@ -2,7 +2,7 @@ package com.tests.web.usefulActions.annotated;
 
 import gr.qa.helperClasses.SetUp;
 import gr.qa.helperClasses.annotations.Environment;
-import gr.qa.listeners.TestMethodCapture;
+import gr.qa.helperClasses.listeners.TestMethodCapture;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterClass;

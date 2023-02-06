@@ -1,7 +1,7 @@
 package com.tests.web.herokuApp;
 
 import gr.qa.helperClasses.SetUp;
-import gr.qa.listeners.TestMethodCapture;
+import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.ABTestingPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.By;

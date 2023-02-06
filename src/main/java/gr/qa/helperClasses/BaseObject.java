@@ -16,22 +16,24 @@ public class BaseObject {
     private final static Logger logger = LogManager.getLogger(SetUp.class);
 
     public static Properties properties = new Properties();
-    public String environment;
+    public static String environment;
 
     /**
      * Load the appropriate properties files, depending on the environment
      */
-    public void loadProperties() {
+    public static void loadProperties() {
         logger.info("Loading property files...");
         environment = getEnvironment();
         // depending on the environment load the correct properties file
         if (environment.equals("staging")) {
             // load dynamic data
             loadPropertyFile("src/main/resources/dataStaging.properties");
+            loadPropertyFile("src/main/resources/urlsStaging.properties");
         }
         else {
             // load dynamic data
             loadPropertyFile("src/main/resources/dataProduction.properties");
+            loadPropertyFile("src/main/resources/urlsProduction.properties");
         }
         logger.info("Property files were successfully loaded.");
     }
@@ -54,7 +56,7 @@ public class BaseObject {
      * Loads property files
      * @param filePath : the path where the property file is located
      */
-    public void loadPropertyFile(String filePath) {
+    public static void loadPropertyFile(String filePath) {
         logger.info("Filepath is: " + filePath);
         InputStream stream;
         try {

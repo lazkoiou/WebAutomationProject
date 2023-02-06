@@ -13,7 +13,7 @@ import org.testng.Reporter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SetUp extends BaseObject {
+public class SetUp {
 
     private final static Logger logger = LogManager.getLogger(SetUp.class);
 
@@ -25,7 +25,7 @@ public class SetUp extends BaseObject {
      */
     public void setupDriver() {
         logger.info("Initializing web driver...");
-        loadProperties();
+        BaseObject.loadProperties();
         ChromeOptions chromeOptions = setupChromeOptions();
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver(chromeOptions);
@@ -82,10 +82,22 @@ public class SetUp extends BaseObject {
         }
         // Lastly, take the browser from the properties file
         else {
-            browser = properties.getProperty("browser");
+            browser = BaseObject.properties.getProperty("browser");
         }
         logger.info("Browser is: " + browser);
         return browser;
+    }
+
+    /**
+     * Sleeps for given time in ms
+     * @param ms : milliseconds
+     */
+    public void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
