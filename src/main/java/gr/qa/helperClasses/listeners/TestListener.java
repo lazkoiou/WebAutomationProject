@@ -1,6 +1,7 @@
 package gr.qa.helperClasses.listeners;
 
-import gr.qa.helperClasses.BaseObject;
+import gr.qa.helperClasses.DriverManager;
+import gr.qa.helperClasses.PropertiesManager;
 import gr.qa.helperClasses.annotations.Environment;
 import gr.qa.tools.FileUtilities;
 import gr.qa.tools.ScreenshotTool;
@@ -37,7 +38,7 @@ public class TestListener implements ITestListener {
         VideoRecordingTool.startRecording(recordingPath, itr);
         // Check if test has an @Environment annotation
         // Current environment
-        String currentEnvironment = BaseObject.getEnvironment();
+        String currentEnvironment = PropertiesManager.getEnvironment();
         // Get the environment annotation if any - else null
         Annotation envAnn = itr.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Environment.class);
         Environment environmentFromAnnotation = (Environment) envAnn;

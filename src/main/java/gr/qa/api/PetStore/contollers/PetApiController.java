@@ -2,7 +2,7 @@ package gr.qa.api.PetStore.contollers;
 
 import gr.qa.api.PetStore.DTOs.DeletePetDTO;
 import gr.qa.api.PetStore.DTOs.PetDTO;
-import gr.qa.helperClasses.BaseObject;
+import gr.qa.helperClasses.PropertiesManager;
 import gr.qa.helperClasses.GenericRestApiCalls;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +20,7 @@ public class PetApiController extends GenericRestApiCalls {
      * Constructor of the controller
      */
     public PetApiController() {
-        petApiEndpoint = BaseObject.properties.getProperty("petApiEndpoint");
+        petApiEndpoint = PropertiesManager.properties.getProperty("petApiEndpoint");
     }
 
     /**

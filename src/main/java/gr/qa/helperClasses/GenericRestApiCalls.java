@@ -2,7 +2,6 @@ package gr.qa.helperClasses;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -18,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class GenericRestApiCalls extends BaseObject {
+public class GenericRestApiCalls extends PropertiesManager {
 
     private final static Logger logger = LogManager.getLogger(GenericRestApiCalls.class);
 

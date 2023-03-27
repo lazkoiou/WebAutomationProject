@@ -7,7 +7,8 @@ import gr.qa.api.PetStore.DTOs.enums.CategoryEnum;
 import gr.qa.api.PetStore.DTOs.enums.StatusEnum;
 import gr.qa.api.PetStore.DTOs.enums.TagsEnum;
 import gr.qa.api.PetStore.contollers.PetApiController;
-import gr.qa.helperClasses.BaseObject;
+import gr.qa.helperClasses.DriverManager;
+import gr.qa.helperClasses.PropertiesManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeClass;
@@ -26,7 +27,7 @@ public class PetApiTests {
 
     @BeforeClass
     public void initialize() {
-        BaseObject.loadProperties();
+        PropertiesManager.loadProperties();
         petApiController = new PetApiController();
     }
 

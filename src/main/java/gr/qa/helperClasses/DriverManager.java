@@ -10,8 +10,13 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestContext;
 import org.testng.Reporter;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class DriverManager {
 
@@ -32,7 +37,7 @@ public class DriverManager {
      */
     public static void setDriver() {
         logger.info("Initializing web driver...");
-        BaseObject.loadProperties();
+        PropertiesManager.loadProperties();
         ChromeOptions chromeOptions = setupChromeOptions();
         WebDriverManager.chromedriver().setup();
         WebDriver webDriver = new ChromeDriver(chromeOptions);
@@ -71,28 +76,6 @@ public class DriverManager {
     public static void tearDownDriver() {
         logger.info("Tearing down web driver.\n");
         DriverManager.driver.get().quit();
-    }
-
-    /**
-     * This method returns the browser used
-     */
-    public String getBrowser() {
-        String browser;
-        ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
-        // First check if we pass it as a test parameter
-        if (iTestContext.getCurrentXmlTest().getParameter("browser") != null) {
-            browser= iTestContext.getCurrentXmlTest().getParameter("browser");
-        }
-        // Else, check if we pass it from Jenkins
-        else if (System.getenv("browser") != null) {
-            browser = System.getenv("browser");
-        }
-        // Lastly, take the browser from the properties file
-        else {
-            browser = BaseObject.properties.getProperty("browser");
-        }
-        logger.info("Browser is: " + browser);
-        return browser;
     }
 
     // TODO: This needs to be moved to BaseTest class

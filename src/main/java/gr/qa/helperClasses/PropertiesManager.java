@@ -11,12 +11,31 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
-public class BaseObject {
+public class PropertiesManager {
 
-    private final static Logger logger = LogManager.getLogger(DriverManager.class);
+    private final static Logger logger = LogManager.getLogger(PropertiesManager.class);
 
     public static Properties properties = new Properties();
     public static String environment;
+
+
+    /**
+     * Loads property files
+     * @param filePath : the path where the property file is located
+     */
+    public static void loadPropertyFile(String filePath) {
+        logger.info("Filepath is: " + filePath);
+        InputStream stream;
+        try {
+            stream = new FileInputStream(filePath);
+            properties.load(new InputStreamReader(stream, "iso-8859-7")); // used to read Greek
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            logger.error("Error loading properties files!");
+            throw new RuntimeException();
+        }
+    }
 
     /**
      * Load the appropriate properties files, depending on the environment
@@ -52,34 +71,27 @@ public class BaseObject {
         }
     }
 
-    /**
-     * Loads property files
-     * @param filePath : the path where the property file is located
-     */
-    public static void loadPropertyFile(String filePath) {
-        logger.info("Filepath is: " + filePath);
-        InputStream stream;
-        try {
-            stream = new FileInputStream(filePath);
-            properties.load(new InputStreamReader(stream, "iso-8859-7")); // used to read Greek
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            logger.error("Error loading properties files!");
-            throw new RuntimeException();
-        }
-    }
 
     /**
-     * Sleeps for given time in ms
-     * @param ms : milliseconds
+     * This method returns the browser used
      */
-    public static void sleep(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public String getBrowser() {
+        String browser;
+        ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
+        // First check if we pass it as a test parameter
+        if (iTestContext.getCurrentXmlTest().getParameter("browser") != null) {
+            browser= iTestContext.getCurrentXmlTest().getParameter("browser");
         }
+        // Else, check if we pass it from Jenkins
+        else if (System.getenv("browser") != null) {
+            browser = System.getenv("browser");
+        }
+        // Lastly, take the browser from the properties file
+        else {
+            browser = properties.getProperty("browser");
+        }
+        logger.info("Browser is: " + browser);
+        return browser;
     }
 
 }
