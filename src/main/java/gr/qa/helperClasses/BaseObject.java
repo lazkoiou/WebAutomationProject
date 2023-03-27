@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class BaseObject {
 
-    private final static Logger logger = LogManager.getLogger(SetUp.class);
+    private final static Logger logger = LogManager.getLogger(DriverManager.class);
 
     public static Properties properties = new Properties();
     public static String environment;

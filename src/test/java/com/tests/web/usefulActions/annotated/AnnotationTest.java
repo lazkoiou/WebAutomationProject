@@ -1,6 +1,5 @@
 package com.tests.web.usefulActions.annotated;
 
-import gr.qa.helperClasses.SetUp;
 import gr.qa.helperClasses.annotations.Environment;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import org.apache.logging.log4j.LogManager;
@@ -10,10 +9,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 @Listeners(TestMethodCapture.class)
-public class AnnotationTest extends SetUp {
+public class AnnotationTest {
 
     private final static Logger logger = LogManager.getLogger(AnnotationTest.class);
 

@@ -13,23 +13,30 @@ import org.testng.Reporter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SetUp {
+public class DriverManager {
 
-    private final static Logger logger = LogManager.getLogger(SetUp.class);
+    private final static Logger logger = LogManager.getLogger(DriverManager.class);
 
-    public static WebDriver webDriver = null;
-    public static WebDriver driver = null;
+    public static ThreadLocal<EventFiringWebDriver> driver = new ThreadLocal<>();
 
     /**
-     * Setup the webdriver
+     * Gets the driver
+     * @return : the driver
      */
-    public void setupDriver() {
+    public static EventFiringWebDriver getDriver() {
+        return DriverManager.driver.get();
+    }
+
+    /**
+     * Set the webdriver
+     */
+    public static void setDriver() {
         logger.info("Initializing web driver...");
         BaseObject.loadProperties();
         ChromeOptions chromeOptions = setupChromeOptions();
         WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver(chromeOptions);
-        driver = new EventFiringWebDriver(webDriver);
+        WebDriver webDriver = new ChromeDriver(chromeOptions);
+        DriverManager.driver.set(new EventFiringWebDriver(webDriver));
         customizeDriver();
         logger.info("The web driver has been initialized.");
     }
@@ -38,7 +45,7 @@ public class SetUp {
      * Setup the chrome options to pass to the webdriver
      * @return : the chrome options
      */
-    public ChromeOptions setupChromeOptions() {
+    public static ChromeOptions setupChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         // the 5 lines below are needed for the FileDownloadTest
@@ -54,16 +61,16 @@ public class SetUp {
     /**
      * Customize the driver
      */
-    public void customizeDriver() {
+    public static void customizeDriver() {
 //        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     /**
      * Quits the web driver
      */
-    public void tearDownDriver() {
+    public static void tearDownDriver() {
         logger.info("Tearing down web driver.\n");
-        driver.quit();
+        DriverManager.driver.get().quit();
     }
 
     /**
@@ -88,11 +95,13 @@ public class SetUp {
         return browser;
     }
 
+    // TODO: This needs to be moved to BaseTest class
     /**
      * Sleeps for given time in ms
      * @param ms : milliseconds
      */
-    public void sleep(int ms) {
+    public static void sleep(int ms) {
+        logger.info("Sleeping for " + ms + " milliseconds...");
         try {
             Thread.sleep(ms);
         } catch (InterruptedException e) {

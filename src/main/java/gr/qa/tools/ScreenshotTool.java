@@ -1,7 +1,7 @@
 package gr.qa.tools;
 
 import com.google.common.io.Files;
-import gr.qa.helperClasses.SetUp;
+import gr.qa.helperClasses.DriverManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +23,7 @@ public class ScreenshotTool {
      * @return : the screenshot in bytes
      */
     public static byte[] getScreenshot(String testName) {
-        if (SetUp.driver != null) {
+        if (DriverManager.driver.get() != null) {
             SimpleDateFormat sdfImage = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             SimpleDateFormat sdfFolder = new SimpleDateFormat("yyyy_MM_dd");
             String formattedDateImage = sdfImage.format(new Date());
@@ -31,7 +31,7 @@ public class ScreenshotTool {
             String path = "src/main/resources/images/";
             String namePrefix = "images_";
             String filepath = path + namePrefix + formattedDateFolder + "/" + testName + "_" + formattedDateImage + ".png";
-            File src = ((TakesScreenshot) SetUp.driver).getScreenshotAs(OutputType.FILE);
+            File src = ((TakesScreenshot) DriverManager.driver.get()).getScreenshotAs(OutputType.FILE);
             logger.info("Screenshot taken: " + filepath);
             try {
                 FileUtils.copyFile(src, new File(filepath));

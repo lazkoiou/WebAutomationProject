@@ -1,19 +1,19 @@
 package com.helpers;
 
-import gr.qa.helperClasses.SetUp;
+import gr.qa.helperClasses.DriverManager;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-public class InitTearDownDriver extends SetUp {
+public class InitTearDownDriver {
 
     @BeforeSuite (alwaysRun = true)
     void initialize() {
-        setupDriver();
+        DriverManager.setDriver();
     }
 
     @AfterSuite (alwaysRun = true)
     void tearDown() {
-        tearDownDriver();
+        DriverManager.tearDownDriver();
     }
 
 }
