@@ -1,14 +1,12 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
-import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.BasicAuthPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -21,8 +19,6 @@ public class BasicAuthTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(NotificationMessageRetryActionsTest.class);
 
-    WebDriver driver;
-
     String homepageURL = "https://the-internet.herokuapp.com/";
     String basicAuthUrl;
     BasicAuthPage basicAuthPage = new BasicAuthPage();
@@ -32,8 +28,6 @@ public class BasicAuthTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        logger.info("* Test class: " + getClass() + " - Starting...");
-        driver = DriverManager.getDriver();
         basicAuthPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
@@ -42,7 +36,7 @@ public class BasicAuthTest extends WebBaseTest {
 
     @AfterClass
     public void testTearDown() {
-        logger.info("* Test class: " + getClass() + " - Ending...");
+        // nothing to do here
     }
 
     @Test

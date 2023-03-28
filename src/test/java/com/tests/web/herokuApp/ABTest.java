@@ -1,8 +1,6 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
-import gr.qa.helperClasses.DriverManager;
-import gr.qa.helperClasses.PropertiesManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.ABTestingPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
@@ -10,10 +8,7 @@ import org.openqa.selenium.By;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-
-import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
 
@@ -25,13 +20,8 @@ public class ABTest extends WebBaseTest {
     String homepageURL = "https://the-internet.herokuapp.com/";
     ABTestingPage abTestingPage = new ABTestingPage();
 
-    WebDriver driver;
-
     @BeforeClass
     public void testSetup() {
-        logger.info("* Test class: " + getClass() + " - Starting...");
-        properties = PropertiesManager.loadProperties();
-        driver = DriverManager.getDriver();
         abTestingPage.setDriverInitElements(driver);
         // open homepage and go to the testing page
         driver.get(homepageURL);
@@ -40,7 +30,7 @@ public class ABTest extends WebBaseTest {
 
     @AfterClass
     public void testTearDown() {
-        logger.info("* Test class: " + getClass() + " - Ending...");
+        // nothing to do
     }
 
     /**

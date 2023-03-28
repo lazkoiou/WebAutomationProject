@@ -1,7 +1,6 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
-import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingElementRenderedAfterTheFactPage;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingHiddenElementPage;
@@ -10,7 +9,6 @@ import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -22,8 +20,6 @@ public class DynamicLoadingTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(DynamicLoadingTest.class);
 
-    WebDriver driver;
-
     String homepageURL = "https://the-internet.herokuapp.com/";
     String dynamicPageURL;
     DynamicLoadingPage dynamicLoadingPage = new DynamicLoadingPage();
@@ -34,8 +30,6 @@ public class DynamicLoadingTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        logger.info("* Test class: " + getClass() + " - Starting...");
-        driver = DriverManager.getDriver();
         dynamicLoadingPage.setDriverInitElements(driver);
         dynamicLoadingHiddenElementPage.setDriverInitElements(driver);
         dynamicLoadingElementRenderedAfterTheFactPage.setDriverInitElements(driver);
@@ -47,7 +41,7 @@ public class DynamicLoadingTest extends WebBaseTest {
 
     @AfterClass
     public void testTearDown() {
-        logger.info("* Test class: " + getClass() + " - Ending...");
+        // nothing to do here
     }
 
     @BeforeMethod

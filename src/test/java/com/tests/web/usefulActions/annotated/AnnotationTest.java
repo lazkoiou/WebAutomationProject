@@ -17,12 +17,12 @@ public class AnnotationTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        logger.info("* Test class: " + getClass() + " - Starting...");
+        // nothing to do here
     }
 
     @AfterClass
     public void testTearDown() {
-        logger.info("* Test class: " + getClass() + " - Ending...");
+        // nothing to do here
     }
 
     @Test
