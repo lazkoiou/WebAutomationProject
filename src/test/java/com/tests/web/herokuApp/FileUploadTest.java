@@ -1,5 +1,6 @@
 package com.tests.web.herokuApp;
 
+import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.FileUploadPage;
@@ -17,7 +18,7 @@ import static org.testng.Assert.assertEquals;
 
 
 @Listeners(TestMethodCapture.class)
-public class FileUploadTest {
+public class FileUploadTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(FileUploadTest.class);
 

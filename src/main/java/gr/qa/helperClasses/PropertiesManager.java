@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.Reporter;
+import org.testng.annotations.Parameters;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class PropertiesManager {
     /**
      * Load the appropriate properties files, depending on the environment
      */
-    public static void loadProperties() {
+    public static Properties loadProperties() {
         logger.info("Loading property files...");
         environment = getEnvironment();
         // depending on the environment load the correct properties file
@@ -55,6 +56,7 @@ public class PropertiesManager {
             loadPropertyFile("src/main/resources/urlsProduction.properties");
         }
         logger.info("Property files were successfully loaded.");
+        return properties;
     }
 
     /**
@@ -62,11 +64,11 @@ public class PropertiesManager {
      * @return : the environment as a String
      */
     public static String getEnvironment() {
-        ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
         if (System.getenv("environment") != null) { // if we pass it from Jenkins
             return System.getenv("environment");
         }
         else { // we run it locally and we pass it through the xml
+            ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
             return iTestContext.getSuite().getParameter("environment");
         }
     }

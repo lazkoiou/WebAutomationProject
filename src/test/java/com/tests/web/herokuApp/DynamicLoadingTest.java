@@ -1,5 +1,6 @@
 package com.tests.web.herokuApp;
 
+import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingElementRenderedAfterTheFactPage;
@@ -17,7 +18,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
-public class DynamicLoadingTest {
+public class DynamicLoadingTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(DynamicLoadingTest.class);
 

@@ -7,16 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.ITestContext;
-import org.testng.Reporter;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class DriverManager {
 
@@ -37,13 +29,12 @@ public class DriverManager {
      */
     public static void setDriver() {
         logger.info("Initializing web driver...");
-        PropertiesManager.loadProperties();
         ChromeOptions chromeOptions = setupChromeOptions();
         WebDriverManager.chromedriver().setup();
         WebDriver webDriver = new ChromeDriver(chromeOptions);
         DriverManager.driver.set(new EventFiringWebDriver(webDriver));
         customizeDriver();
-        logger.info("The web driver has been initialized.");
+        logger.info("The web driver has been initialized with hash code: " + DriverManager.driver.get().hashCode());
     }
 
     /**

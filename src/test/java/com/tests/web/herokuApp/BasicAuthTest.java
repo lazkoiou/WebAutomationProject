@@ -1,5 +1,6 @@
 package com.tests.web.herokuApp;
 
+import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.BasicAuthPage;
@@ -16,7 +17,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
-public class BasicAuthTest {
+public class BasicAuthTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(NotificationMessageRetryActionsTest.class);
 

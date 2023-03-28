@@ -4,6 +4,8 @@
 <suite name="Sample Tests Suite">
 
     <listeners>
+        <listener class-name="gr.qa.helperClasses.listeners.SuiteListener"/>
+        <listener class-name="gr.qa.helperClasses.listeners.ClassListener"/>
         <listener class-name="gr.qa.helperClasses.listeners.TestListener"/>
     </listeners>
 
@@ -11,11 +13,11 @@
     <parameter name="environment" value="production"/>
     <!--parameter name="environment" value="staging"/-->
 
-    <test name="Initialize and Tear Down of the web driver">
-        <classes>
-            <class name="com.helpers.InitTearDownDriver"/>
-        </classes>
-    </test>
+<!--    <test name="Initialize and Tear Down of the web driver">-->
+<!--        <classes>-->
+<!--            <class name="com.helpers.InitTearDownDriver"/>-->
+<!--        </classes>-->
+<!--    </test>-->
     <test name="Heroku App Tests">
         <packages>
             <package name="com.tests.web.herokuApp"/>

@@ -1,5 +1,6 @@
 package com.tests.web.herokuApp;
 
+import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.DropdownPage;
@@ -17,7 +18,7 @@ import static org.testng.Assert.assertEquals;
 
 
 @Listeners(TestMethodCapture.class)
-public class DropdownTest {
+public class DropdownTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(DropdownTest.class);
 

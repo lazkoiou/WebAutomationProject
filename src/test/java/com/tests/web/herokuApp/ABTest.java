@@ -1,6 +1,8 @@
 package com.tests.web.herokuApp;
 
+import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.DriverManager;
+import gr.qa.helperClasses.PropertiesManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.ABTestingPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
@@ -9,15 +11,14 @@ import org.openqa.selenium.By;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
-public class ABTest {
+public class ABTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(ABTest.class);
 
@@ -29,6 +30,7 @@ public class ABTest {
     @BeforeClass
     public void testSetup() {
         logger.info("* Test class: " + getClass() + " - Starting...");
+        properties = PropertiesManager.loadProperties();
         driver = DriverManager.getDriver();
         abTestingPage.setDriverInitElements(driver);
         // open homepage and go to the testing page

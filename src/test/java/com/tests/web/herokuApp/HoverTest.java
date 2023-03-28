@@ -1,5 +1,6 @@
 package com.tests.web.herokuApp;
 
+import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.HoverPage;
@@ -18,7 +19,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
-public class HoverTest {
+public class HoverTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(HoverTest.class);
 
