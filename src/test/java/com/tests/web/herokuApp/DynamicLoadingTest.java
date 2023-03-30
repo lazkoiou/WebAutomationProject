@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 @Listeners(TestMethodCapture.class)
@@ -54,7 +56,7 @@ public class DynamicLoadingTest extends WebBaseTest {
         dynamicLoadingHiddenElementPage.isLoaded();
         dynamicLoadingHiddenElementPage.getStartButton().click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 7);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(dynamicLoadingHiddenElementPage.getUnhiddenText()));
 
         assertEquals(dynamicLoadingHiddenElementPage.getUnhiddenText().getText(), expectedUnhiddenText);
@@ -71,7 +73,7 @@ public class DynamicLoadingTest extends WebBaseTest {
         dynamicLoadingElementRenderedAfterTheFactPage.isLoaded();
         dynamicLoadingElementRenderedAfterTheFactPage.getStartButton().click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 7);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(dynamicLoadingHiddenElementPage.getUnhiddenText()));
 
         assertEquals(dynamicLoadingHiddenElementPage.getUnhiddenText().getText(), expectedUnhiddenText);

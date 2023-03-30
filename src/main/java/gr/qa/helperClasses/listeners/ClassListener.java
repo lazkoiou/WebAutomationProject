@@ -1,6 +1,5 @@
 package gr.qa.helperClasses.listeners;
 
-import gr.qa.helperClasses.PropertiesManager;
 import org.testng.IClassListener;
 import org.testng.ITestClass;
 

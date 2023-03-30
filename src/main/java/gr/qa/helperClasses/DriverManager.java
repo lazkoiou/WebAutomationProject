@@ -44,6 +44,7 @@ public class DriverManager {
     public static ChromeOptions setupChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
+        options.addArguments("--remote-allow-origins=*"); // this is needed because of a bug in chrome 111 (https://github.com/SeleniumHQ/selenium/issues/11750)
         // the 5 lines below are needed for the FileDownloadTest
         String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\testFiles\\downloaded";
         logger.info("Setting default download filepath: " + filePath);
