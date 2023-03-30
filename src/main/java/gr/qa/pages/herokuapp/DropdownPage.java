@@ -1,11 +1,15 @@
 package gr.qa.pages.herokuapp;
 
 import gr.qa.pages.BasePage;
+import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class DropdownPage extends BasePage {
+
+    @FindBy(css = "#content .example h3")
+    private WebElement title;
 
     @FindBy(css = "#dropdown")
     private WebElement dropdownList;
@@ -28,6 +32,16 @@ public class DropdownPage extends BasePage {
 
     public String getTextFromSelectedOption() {
         return selectedOption.getText();
+    }
+
+    public void load() {
+        driver.get(HerokuTestPagesEnum.DROPDOWN.getUrl());
+    }
+
+    public void isLoaded() {
+        if (!waitUntilVisible(title).getText().equals("Dropdown List")) {
+            throw new Error("Page is not loaded!");
+        }
     }
 
 }

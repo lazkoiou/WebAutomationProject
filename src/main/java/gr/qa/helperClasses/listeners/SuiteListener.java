@@ -1,7 +1,6 @@
 package gr.qa.helperClasses.listeners;
 
 import gr.qa.helperClasses.DriverManager;
-import gr.qa.helperClasses.PropertiesManager;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 

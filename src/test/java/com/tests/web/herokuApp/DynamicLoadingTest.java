@@ -5,10 +5,8 @@ import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingElementRenderedAfterTheFactPage;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingHiddenElementPage;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingPage;
-import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -20,8 +18,6 @@ public class DynamicLoadingTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(DynamicLoadingTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
-    String dynamicPageURL;
     DynamicLoadingPage dynamicLoadingPage = new DynamicLoadingPage();
     DynamicLoadingHiddenElementPage dynamicLoadingHiddenElementPage = new DynamicLoadingHiddenElementPage();
     DynamicLoadingElementRenderedAfterTheFactPage dynamicLoadingElementRenderedAfterTheFactPage = new DynamicLoadingElementRenderedAfterTheFactPage();
@@ -33,10 +29,6 @@ public class DynamicLoadingTest extends WebBaseTest {
         dynamicLoadingPage.setDriverInitElements(driver);
         dynamicLoadingHiddenElementPage.setDriverInitElements(driver);
         dynamicLoadingElementRenderedAfterTheFactPage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.DYNAMIC_LOADING.getLinkText())).click();
-        dynamicPageURL = driver.getCurrentUrl();
     }
 
     @AfterClass
@@ -47,7 +39,8 @@ public class DynamicLoadingTest extends WebBaseTest {
     @BeforeMethod
     public void navigateToStartingURL() {
         logger.info("Navigate to appropriate URL to begin the test case...");
-        driver.get(dynamicPageURL);
+        dynamicLoadingPage.load();
+        dynamicLoadingPage.isLoaded();
     }
 
     /**
@@ -58,6 +51,7 @@ public class DynamicLoadingTest extends WebBaseTest {
     @Test
     void hiddenElementOnPageTest() {
         dynamicLoadingPage.getHiddenElementExampleLink().click();
+        dynamicLoadingHiddenElementPage.isLoaded();
         dynamicLoadingHiddenElementPage.getStartButton().click();
 
         WebDriverWait wait = new WebDriverWait(driver, 7);
@@ -74,6 +68,7 @@ public class DynamicLoadingTest extends WebBaseTest {
     @Test
     void elementRenderedAfterTheFactTest() {
         dynamicLoadingPage.getElementRenderedAfterwardsExampleLink().click();
+        dynamicLoadingElementRenderedAfterTheFactPage.isLoaded();
         dynamicLoadingElementRenderedAfterTheFactPage.getStartButton().click();
 
         WebDriverWait wait = new WebDriverWait(driver, 7);

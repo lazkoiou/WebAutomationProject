@@ -19,7 +19,6 @@ public class FrameTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(FrameTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
     FrameInitialPage frameInitialPage = new FrameInitialPage();
     NestedFramesPage nestedFramesPage = new NestedFramesPage();
     IFramePage iFramePage = new IFramePage();
@@ -38,38 +37,42 @@ public class FrameTest extends WebBaseTest {
 
     @BeforeMethod
     public void navigateBeforeEachTest() {
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.FRAMES.getLinkText())).click();
+        frameInitialPage.load();
+        frameInitialPage.isLoaded();
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyTopLeftTest() {
         frameInitialPage.getNestedFramesLink().click();
+        nestedFramesPage.isLoaded();
         assertEquals(nestedFramesPage.findTopLeftFrameHeader(), "LEFT");
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyTopMiddleTest() {
         frameInitialPage.getNestedFramesLink().click();
+        nestedFramesPage.isLoaded();
         assertEquals(nestedFramesPage.findTopMiddleFrameHeader(), "MIDDLE");
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyTopRightTest() {
         frameInitialPage.getNestedFramesLink().click();
+        nestedFramesPage.isLoaded();
         assertEquals(nestedFramesPage.findTopRightFrameHeader(), "RIGHT");
     }
 
     @Test(priority = 1)
     public void nestedFramesVerifyBottomTest() {
         frameInitialPage.getNestedFramesLink().click();
+        nestedFramesPage.isLoaded();
         assertEquals(nestedFramesPage.findBottomFrameHeader(), "BOTTOM");
     }
     
     @Test(priority = 2)
     public void iFrameTest() {
         frameInitialPage.getiFrameLink().click();
+        iFramePage.isLoaded();
         driver.switchTo().frame("mce_0_ifr");
         String beforeText = iFramePage.getEditorText().getText();
         iFramePage.inputTextIntoIFrameEditor("New content is here!");

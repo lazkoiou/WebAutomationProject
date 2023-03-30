@@ -13,4 +13,14 @@ public class NewMultipleWindowsPage extends BasePage {
         return newWindowHeader;
     }
 
+    public void load() {
+        driver.get("https://the-internet.herokuapp.com/windows/new");
+    }
+
+    public void isLoaded() {
+        if (!newWindowHeader.getText().equals("New Window")) {
+            throw new Error("Page is not loaded!");
+        }
+    }
+
 }

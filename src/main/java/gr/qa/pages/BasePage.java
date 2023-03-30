@@ -1,14 +1,17 @@
 package gr.qa.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Base class for the web pages
  * Contains some basic functions that each page might use
  */
-public class BasePage {
+public abstract class BasePage extends LoadableComponent<BasePage> {
 
     public static WebDriver driver;
     private WebDriverWait wait;
@@ -32,6 +35,10 @@ public class BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public WebElement waitUntilVisible(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 }

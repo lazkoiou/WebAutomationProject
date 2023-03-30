@@ -6,5 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class HerokuHomepage extends BasePage {
 
+    @FindBy(css = "#content .heading")
+    private WebElement title;
+
+    public void load() {
+        driver.get("https://the-internet.herokuapp.com/");
+    }
+
+    public void isLoaded() {
+        if (!title.getText().equals("Welcome to the-internet")) {
+            throw new Error("Page is not loaded!");
+        }
+    }
 
 }

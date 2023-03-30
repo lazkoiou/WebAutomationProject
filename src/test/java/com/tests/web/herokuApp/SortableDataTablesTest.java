@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 @Listeners(TestMethodCapture.class)
@@ -22,15 +21,13 @@ public class SortableDataTablesTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(SortableDataTablesTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
     SortableDataTablesPage sortableDataTablesPage = new SortableDataTablesPage();
 
     @BeforeClass
     public void testSetup() {
         sortableDataTablesPage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.SORTABLE_DATA_TABLES.getLinkText())).click();
+        sortableDataTablesPage.load();
+        sortableDataTablesPage.isLoaded();
     }
 
     @AfterClass

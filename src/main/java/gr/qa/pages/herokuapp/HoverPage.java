@@ -1,6 +1,7 @@
 package gr.qa.pages.herokuapp;
 
 import gr.qa.pages.BasePage;
+import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,6 +15,9 @@ import java.util.List;
 public class HoverPage extends BasePage {
 
     private final static Logger logger = LogManager.getLogger(HoverPage.class);
+
+    @FindBy(css = "#content .example h3")
+    private WebElement title;
 
     @FindBy(css = ".example .figure")
     private List<WebElement> userProfileFigures;
@@ -36,6 +40,16 @@ public class HoverPage extends BasePage {
             profileUsernames.add(userProfileFigure.findElement(By.cssSelector(".figcaption h5")).getText(). replace("name: ", ""));
         });
         return profileUsernames;
+    }
+
+    public void load() {
+        driver.get(HerokuTestPagesEnum.HOVERS.getUrl());
+    }
+
+    public void isLoaded() {
+        if (!waitUntilVisible(title).getText().equals(HerokuTestPagesEnum.HOVERS.getTitle())) {
+            throw new Error("Page is not loaded!");
+        }
     }
 
 }

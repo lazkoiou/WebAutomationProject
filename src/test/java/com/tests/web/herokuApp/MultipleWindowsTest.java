@@ -21,7 +21,6 @@ public class MultipleWindowsTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(MultipleWindowsTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
     MultipleWindowsPage multipleWindowsPage = new MultipleWindowsPage();
     NewMultipleWindowsPage newMultipleWindowsPage = new NewMultipleWindowsPage();
 
@@ -29,9 +28,8 @@ public class MultipleWindowsTest extends WebBaseTest {
     public void testSetup() {
         multipleWindowsPage.setDriverInitElements(driver);
         newMultipleWindowsPage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.MULTIPLE_WINDOWS.getLinkText())).click();
+        multipleWindowsPage.load();
+        multipleWindowsPage.isLoaded();
     }
     @AfterClass
     public void testTearDown() {
@@ -42,6 +40,7 @@ public class MultipleWindowsTest extends WebBaseTest {
     void openNewWindowTest() {
         String firstTab = driver.getWindowHandle();
         multipleWindowsPage.openNewWindowAndSwitchToIt(firstTab);
+        newMultipleWindowsPage.isLoaded();
         assertEquals(newMultipleWindowsPage.getNewWindowHeader().getText(), "New Window");
         multipleWindowsPage.closeNewWindowAndSwitchToPrevious(firstTab);
     }

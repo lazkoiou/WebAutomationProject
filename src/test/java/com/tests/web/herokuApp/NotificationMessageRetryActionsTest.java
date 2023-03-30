@@ -14,21 +14,18 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-
 @Listeners(TestMethodCapture.class)
 public class NotificationMessageRetryActionsTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(NotificationMessageRetryActionsTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
     NotificationMessagePage notificationMessagePage = new NotificationMessagePage();
 
     @BeforeClass
     public void testSetup() {
         notificationMessagePage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.NOTIFICATION_MESSAGES.getLinkText())).click();
+        notificationMessagePage.load();
+        notificationMessagePage.isLoaded();
     }
 
     @AfterClass

@@ -6,6 +6,8 @@ import org.testng.annotations.BeforeSuite;
 
 public class InitTearDownDriver {
 
+    // TODO: Probably need to delete this class
+
     @BeforeSuite (alwaysRun = true)
     void initialize() {
         DriverManager.setDriver();

@@ -36,4 +36,14 @@ public class NestedFramesPage extends BasePage {
         return frameHeader.getText();
     }
 
+    public void load() {
+        driver.get("https://the-internet.herokuapp.com/nested_frames");
+    }
+
+    public void isLoaded() {
+        if (!driver.getCurrentUrl().contains("/nested_frames")) {
+            throw new Error("Page is not loaded!");
+        }
+    }
+
 }

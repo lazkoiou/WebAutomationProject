@@ -20,15 +20,13 @@ public class DropdownTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(DropdownTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
     DropdownPage dropdownPage = new DropdownPage();
 
     @BeforeClass
     public void testSetup() {
         dropdownPage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.DROPDOWN.getLinkText())).click();
+        dropdownPage.load();
+        dropdownPage.isLoaded();
     }
 
     @AfterClass

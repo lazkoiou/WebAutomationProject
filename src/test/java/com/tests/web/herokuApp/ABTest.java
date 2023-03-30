@@ -17,15 +17,13 @@ public class ABTest extends WebBaseTest {
 
     private final static Logger logger = LogManager.getLogger(ABTest.class);
 
-    String homepageURL = "https://the-internet.herokuapp.com/";
     ABTestingPage abTestingPage = new ABTestingPage();
 
     @BeforeClass
     public void testSetup() {
         abTestingPage.setDriverInitElements(driver);
-        // open homepage and go to the testing page
-        driver.get(homepageURL);
-        driver.findElement(By.linkText(HerokuTestPagesEnum.AB_TESTING.getLinkText())).click();
+        abTestingPage.load();
+        abTestingPage.isLoaded();
     }
 
     @AfterClass

@@ -1,10 +1,14 @@
 package gr.qa.pages.herokuapp.dynamicLoadingPages;
 
 import gr.qa.pages.BasePage;
+import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class DynamicLoadingPage extends BasePage {
+
+    @FindBy(css = "#content .example h3")
+    private WebElement title;
 
     @FindBy(linkText = "Example 1: Element on page that is hidden")
     private WebElement hiddenElementExampleLink;
@@ -18,6 +22,16 @@ public class DynamicLoadingPage extends BasePage {
 
     public WebElement getElementRenderedAfterwardsExampleLink() {
         return elementRenderedAfterwardsExampleLink;
+    }
+
+    public void load() {
+        driver.get(HerokuTestPagesEnum.DYNAMIC_LOADING.getUrl());
+    }
+
+    public void isLoaded() {
+        if (!waitUntilVisible(title).getText().equals(HerokuTestPagesEnum.DYNAMIC_LOADING.getTitle())) {
+            throw new Error("Page is not loaded!");
+        }
     }
 
 }
