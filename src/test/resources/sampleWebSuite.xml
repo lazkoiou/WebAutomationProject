@@ -13,11 +13,6 @@
     <parameter name="environment" value="production"/>
     <!--parameter name="environment" value="staging"/-->
 
-<!--    <test name="Initialize and Tear Down of the web driver">-->
-<!--        <classes>-->
-<!--            <class name="com.helpers.InitTearDownDriver"/>-->
-<!--        </classes>-->
-<!--    </test>-->
     <test name="Heroku App Tests">
         <packages>
             <package name="com.tests.web.herokuApp"/>
@@ -35,7 +30,7 @@
     </test>
     <test name="Working on -">
         <classes>
-            <class name="com.tests.web.herokuApp.HoverTest"/>
+            <class name="com.tests.web.herokuApp.NotificationMessageRetryActionsTest"/>
         </classes>
     </test>
 </suite>

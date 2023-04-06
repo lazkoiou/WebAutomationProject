@@ -62,7 +62,6 @@ public class TestListener implements ITestListener {
         // Add image attachment to allure
         logger.info("Attaching screenshot to allure...");
         InputStream imageStream = new ByteArrayInputStream(Objects.requireNonNull(imageBytes));
-        // TODO: For some reason the screenshot is not attached in allure report
         Allure.addAttachment("Screenshot on failure", imageStream);
         // Stop the test video recording
         VideoRecordingTool.stopRecording(itr);
@@ -74,7 +73,6 @@ public class TestListener implements ITestListener {
         // Allure.addAttachment("Test video", "video/mp4", "videoStream, "mp4");
         // However, there is a known bug, where on test failure, the video is not attached
         // We will use the code below to add a downloadable video attachment
-        // TODO: For some reason the test video recording is not attached in allure report
         Allure.addAttachment("Test video", videoStream);
         logger.info("You can find the test video recording at: \"" + recordingPath + "\"");
     }

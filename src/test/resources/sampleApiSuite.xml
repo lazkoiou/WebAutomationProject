@@ -11,12 +11,6 @@
     <parameter name="environment" value="production"/>
     <!--parameter name="environment" value="staging"/-->
 
-    <!-- TODO: Refactor so that driver is initialized only for Web tests -->
-    <test name="Initialize and Tear Down of the web driver">
-        <classes>
-            <class name="com.helpers.InitTearDownDriver"/>
-        </classes>
-    </test>
     <test name="Pet store API tests">
         <classes>
             <class name="com.tests.api.petStore.PetApiTests"/>
