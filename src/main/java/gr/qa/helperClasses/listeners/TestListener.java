@@ -33,9 +33,9 @@ public class TestListener implements ITestListener {
         // Log test case starting info
         logger.info("** Test case: " + itr.getName() + " - Starting...");
         startTime = System.nanoTime();
-        // Start test case video recording
-        recordingPath = VideoRecordingTool.getRecordingPath(itr);
-        VideoRecordingTool.startRecording(recordingPath, itr);
+        //// Start test case video recording - Recording is not working with parallel tests running
+        //recordingPath = VideoRecordingTool.getRecordingPath(itr);
+        //VideoRecordingTool.startRecording(recordingPath, itr);
         // Check if test has an @Environment annotation
         // Current environment
         String currentEnvironment = PropertiesManager.getEnvironment();
@@ -63,18 +63,18 @@ public class TestListener implements ITestListener {
         logger.info("Attaching screenshot to allure...");
         InputStream imageStream = new ByteArrayInputStream(Objects.requireNonNull(imageBytes));
         Allure.addAttachment("Screenshot on failure", imageStream);
-        // Stop the test video recording
-        VideoRecordingTool.stopRecording(itr);
-        FileUtilities.getLatestFileInDirectory(recordingPath);
-        byte[] videoBytes = VideoRecordingTool.getLatestRecordingForCurrentTest(itr);
-        logger.info("Attaching test video recording to allure...");
-        InputStream videoStream = new ByteArrayInputStream(Objects.requireNonNull(videoBytes));
-        // An embedded video would be attached to allure with the below code
-        // Allure.addAttachment("Test video", "video/mp4", "videoStream, "mp4");
-        // However, there is a known bug, where on test failure, the video is not attached
-        // We will use the code below to add a downloadable video attachment
-        Allure.addAttachment("Test video", videoStream);
-        logger.info("You can find the test video recording at: \"" + recordingPath + "\"");
+        //// Stop the test video recording
+        //VideoRecordingTool.stopRecording(itr);
+        //FileUtilities.getLatestFileInDirectory(recordingPath);
+        //byte[] videoBytes = VideoRecordingTool.getLatestRecordingForCurrentTest(itr);
+        //logger.info("Attaching test video recording to allure...");
+        //InputStream videoStream = new ByteArrayInputStream(Objects.requireNonNull(videoBytes));
+        //// An embedded video would be attached to allure with the below code
+        //// Allure.addAttachment("Test video", "video/mp4", "videoStream, "mp4");
+        //// However, there is a known bug, where on test failure, the video is not attached
+        //// We will use the code below to add a downloadable video attachment
+        //Allure.addAttachment("Test video", videoStream);
+        //logger.info("You can find the test video recording at: \"" + recordingPath + "\"");
     }
 
     @Override
@@ -85,13 +85,15 @@ public class TestListener implements ITestListener {
         logger.info("** Test case: " + itr.getName() + " - Ending...");
         logger.info("TEST SUCCESS! Elapsed time: " + elapsedTimeInSec);
         logger.info("Deleting test video recording, since test passed successfully...");
-        VideoRecordingTool.stopRecording(itr);
-        File recordingToDelete = FileUtilities.getLatestFileInDirectory(recordingPath);
-        if (recordingToDelete.delete()) {
-            logger.info("Test recording has been successfully deleted.");
-        } else {
-            logger.error("Test recording could not be deleted!");
-        }
+        //VideoRecordingTool.stopRecording(itr);
+        //File recordingToDelete = FileUtilities.getLatestFileInDirectory(recordingPath);
+
+        //if (recordingToDelete.delete()) {
+        //    logger.info("Test recording has been successfully deleted.");
+        //} else {
+        //    logger.error("Test recording could not be deleted!");
+        //}
+
     }
 
 }
