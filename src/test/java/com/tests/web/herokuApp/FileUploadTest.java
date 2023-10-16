@@ -22,7 +22,7 @@ public class FileUploadTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        fileUploadPage.setDriverInitElements(driver);
+        fileUploadPage.initializeElements();
         fileUploadPage.load();
         fileUploadPage.isLoaded();
     }

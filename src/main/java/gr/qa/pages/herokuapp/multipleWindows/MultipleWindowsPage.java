@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp.multipleWindows;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
@@ -20,7 +21,7 @@ public class MultipleWindowsPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.MULTIPLE_WINDOWS.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.MULTIPLE_WINDOWS.getUrl());
     }
 
     public void isLoaded() {
@@ -36,10 +37,10 @@ public class MultipleWindowsPage extends BasePage {
      */
     public void openNewWindowAndSwitchToIt(String firstTab) {
         openNewWindowButton.click();
-        Set<String> tabs = driver.getWindowHandles();
+        Set<String> tabs = DriverManager.get().getWindowHandles();
         for (String tab : tabs) {
             if (!tab.equals(firstTab)) {
-                driver.switchTo().window(tab);
+                DriverManager.get().switchTo().window(tab);
                 break;
             }
         }
@@ -50,8 +51,8 @@ public class MultipleWindowsPage extends BasePage {
      * @param firstTab : the previous window (tab)
      */
     public void closeNewWindowAndSwitchToPrevious(String firstTab) {
-        driver.close();
-        driver.switchTo().window(firstTab);
+        DriverManager.get().close();
+        DriverManager.get().switchTo().window(firstTab);
     }
 
 }

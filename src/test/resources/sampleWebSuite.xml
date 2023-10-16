@@ -13,7 +13,7 @@
     <parameter name="environment" value="production"/>
     <!--parameter name="environment" value="staging"/-->
 
-    <test name="Heroku App Tests">
+    <test thread-count="6" parallel="classes" name="Heroku App Tests">
         <packages>
             <package name="com.tests.web.herokuApp"/>
         </packages>

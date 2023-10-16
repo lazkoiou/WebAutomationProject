@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp.dynamicLoadingPages;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,7 @@ public class DynamicLoadingPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.DYNAMIC_LOADING.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.DYNAMIC_LOADING.getUrl());
     }
 
     public void isLoaded() {

@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +31,7 @@ public class NotificationMessagePage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.NOTIFICATION_MESSAGES.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.NOTIFICATION_MESSAGES.getUrl());
     }
 
     public void isLoaded() {
@@ -48,9 +49,9 @@ public class NotificationMessagePage extends BasePage {
             loadNewNotificationButton.click();
             sleep(500);
             // the below element needs to be searched each time to find the updated value
-            logger.info("***text: " + driver.findElement(By.cssSelector("#flash")).getText());
-            logger.info("condition: " + driver.findElement(By.cssSelector("#flash")).getText().equals("Action successful"));
-            if (driver.findElement(By.cssSelector("#flash")).getText().contains("Action successful")) {
+            logger.info("***text: " + DriverManager.get().findElement(By.cssSelector("#flash")).getText());
+            logger.info("condition: " + DriverManager.get().findElement(By.cssSelector("#flash")).getText().equals("Action successful"));
+            if (DriverManager.get().findElement(By.cssSelector("#flash")).getText().contains("Action successful")) {
                 return true;
             }
         }

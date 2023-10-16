@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +35,7 @@ public class SortableDataTablesPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.SORTABLE_DATA_TABLES.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.SORTABLE_DATA_TABLES.getUrl());
     }
 
     public void isLoaded() {

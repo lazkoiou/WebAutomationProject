@@ -25,7 +25,7 @@ public class FileDownloadTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        fileDownloadPage.setDriverInitElements(driver);
+        fileDownloadPage.initializeElements();
         fileDownloadPage.load();
         fileDownloadPage.isLoaded();
     }

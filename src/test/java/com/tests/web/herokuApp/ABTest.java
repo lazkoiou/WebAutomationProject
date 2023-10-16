@@ -1,10 +1,9 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.ABTestingPage;
-import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
-import org.openqa.selenium.By;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +20,7 @@ public class ABTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        abTestingPage.setDriverInitElements(driver);
+        abTestingPage.initializeElements();
         abTestingPage.load();
         abTestingPage.isLoaded();
     }
@@ -38,8 +37,8 @@ public class ABTest extends WebBaseTest {
     @Test
     void optOutUrlTest() {
         // add optOutUrl, refresh and accept the js alert
-        driver.get(driver.getCurrentUrl() + "?optimizely_opt_out=true");
-        driver.switchTo().alert().accept();
+        DriverManager.get().get(DriverManager.get().getCurrentUrl() + "?optimizely_opt_out=true");
+        DriverManager.get().switchTo().alert().accept();
         assertEquals(abTestingPage.getHeading().getText(), "No A/B Test");
     }
 

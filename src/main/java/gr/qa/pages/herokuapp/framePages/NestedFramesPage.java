@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp.framePages;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,34 +15,34 @@ public class NestedFramesPage extends BasePage {
     }
 
     public String findTopLeftFrameHeader() {
-        driver.switchTo().frame("frame-top");
-        driver.switchTo().frame("frame-left");
+        DriverManager.get().switchTo().frame("frame-top");
+        DriverManager.get().switchTo().frame("frame-left");
         return frameHeader.getText();
     }
 
     public String findTopMiddleFrameHeader() {
-        driver.switchTo().frame("frame-top");
-        driver.switchTo().frame("frame-middle");
+        DriverManager.get().switchTo().frame("frame-top");
+        DriverManager.get().switchTo().frame("frame-middle");
         return frameHeader.getText();
     }
 
     public String findTopRightFrameHeader() {
-        driver.switchTo().frame("frame-top");
-        driver.switchTo().frame("frame-right");
+        DriverManager.get().switchTo().frame("frame-top");
+        DriverManager.get().switchTo().frame("frame-right");
         return frameHeader.getText();
     }
 
     public String findBottomFrameHeader() {
-        driver.switchTo().frame("frame-bottom");
+        DriverManager.get().switchTo().frame("frame-bottom");
         return frameHeader.getText();
     }
 
     public void load() {
-        driver.get("https://the-internet.herokuapp.com/nested_frames");
+        DriverManager.get().get("https://the-internet.herokuapp.com/nested_frames");
     }
 
     public void isLoaded() {
-        if (!driver.getCurrentUrl().contains("/nested_frames")) {
+        if (!DriverManager.get().getCurrentUrl().contains("/nested_frames")) {
             throw new Error("Page is not loaded!");
         }
     }

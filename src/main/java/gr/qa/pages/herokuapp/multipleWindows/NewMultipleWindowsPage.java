@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp.multipleWindows;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ public class NewMultipleWindowsPage extends BasePage {
     }
 
     public void load() {
-        driver.get("https://the-internet.herokuapp.com/windows/new");
+        DriverManager.get().get("https://the-internet.herokuapp.com/windows/new");
     }
 
     public void isLoaded() {

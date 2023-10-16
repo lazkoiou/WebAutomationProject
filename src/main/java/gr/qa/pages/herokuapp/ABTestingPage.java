@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +20,7 @@ public class ABTestingPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.AB_TESTING.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.AB_TESTING.getUrl());
     }
 
     public void isLoaded() {

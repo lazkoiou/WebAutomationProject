@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,7 @@ public class AddRemoveElementPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.ADD_REMOVE_ELEMENTS.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.ADD_REMOVE_ELEMENTS.getUrl());
     }
 
     public void isLoaded() {

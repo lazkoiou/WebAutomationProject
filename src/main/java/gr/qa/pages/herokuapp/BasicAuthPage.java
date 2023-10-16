@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -19,12 +20,12 @@ public class BasicAuthPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.BASIC_AUTH.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.BASIC_AUTH.getUrl());
     }
 
     public void isLoaded() {
-        if (!driver.getCurrentUrl().contains("/basic_auth")) {
-            logger.error("Url is not correct: " + driver.getCurrentUrl());
+        if (!DriverManager.get().getCurrentUrl().contains("/basic_auth")) {
+            logger.error("Url is not correct: " + DriverManager.get().getCurrentUrl());
             throw new Error("Page is not loaded!");
         }
     }

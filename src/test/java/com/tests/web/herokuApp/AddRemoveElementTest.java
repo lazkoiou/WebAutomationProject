@@ -1,6 +1,7 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.AddRemoveElementPage;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +21,7 @@ public class AddRemoveElementTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        addRemoveElementPage.setDriverInitElements(driver);
+        addRemoveElementPage.initializeElements();
         addRemoveElementPage.load();
         addRemoveElementPage.isLoaded();
     }
@@ -34,14 +35,14 @@ public class AddRemoveElementTest extends WebBaseTest {
     public void addElementTest() {
         // create a new element
         addRemoveElementPage.getAddElementButton().click();
-        assertFalse(driver.findElements(By.cssSelector(".example .added-manually")).isEmpty());
+        assertFalse(DriverManager.get().findElements(By.cssSelector(".example .added-manually")).isEmpty());
     }
 
     @Test(priority = 2, dependsOnMethods = "addElementTest")
     public void removeElementTest() {
         // delete the element we created
-        addRemoveElementPage.getDeleteElementButton().click();
-        assertTrue(driver.findElements(By.cssSelector(".example .added-manually")).isEmpty());
+        addRemoveElementPage.waitUntilVisible(addRemoveElementPage.getDeleteElementButton()).click();
+        assertTrue(DriverManager.get().findElements(By.cssSelector(".example .added-manually")).isEmpty());
     }
 
 }

@@ -23,7 +23,7 @@ public class HoverTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        hoverPage.setDriverInitElements(driver);
+        hoverPage.initializeElements();
         hoverPage.load();
         hoverPage.isLoaded();
     }

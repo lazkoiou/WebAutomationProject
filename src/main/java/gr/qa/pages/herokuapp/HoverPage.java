@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +36,7 @@ public class HoverPage extends BasePage {
         List<String> profileUsernames = new ArrayList<>();
         userProfileFigures.forEach(userProfileFigure -> {
             WebElement userProfileFigureImage = userProfileFigure.findElement(By.cssSelector("img"));
-            Actions actions = new Actions(driver);
+            Actions actions = new Actions(DriverManager.get());
             actions.moveToElement(userProfileFigureImage).perform();
             profileUsernames.add(userProfileFigure.findElement(By.cssSelector(".figcaption h5")).getText(). replace("name: ", ""));
         });
@@ -43,7 +44,7 @@ public class HoverPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.HOVERS.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.HOVERS.getUrl());
     }
 
     public void isLoaded() {

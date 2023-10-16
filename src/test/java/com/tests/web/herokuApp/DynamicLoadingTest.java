@@ -1,6 +1,7 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingElementRenderedAfterTheFactPage;
 import gr.qa.pages.herokuapp.dynamicLoadingPages.DynamicLoadingHiddenElementPage;
@@ -28,9 +29,9 @@ public class DynamicLoadingTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        dynamicLoadingPage.setDriverInitElements(driver);
-        dynamicLoadingHiddenElementPage.setDriverInitElements(driver);
-        dynamicLoadingElementRenderedAfterTheFactPage.setDriverInitElements(driver);
+        dynamicLoadingPage.initializeElements();
+        dynamicLoadingHiddenElementPage.initializeElements();
+        dynamicLoadingElementRenderedAfterTheFactPage.initializeElements();
     }
 
     @AfterClass
@@ -56,7 +57,7 @@ public class DynamicLoadingTest extends WebBaseTest {
         dynamicLoadingHiddenElementPage.isLoaded();
         dynamicLoadingHiddenElementPage.getStartButton().click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(DriverManager.get(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(dynamicLoadingHiddenElementPage.getUnhiddenText()));
 
         assertEquals(dynamicLoadingHiddenElementPage.getUnhiddenText().getText(), expectedUnhiddenText);
@@ -73,7 +74,7 @@ public class DynamicLoadingTest extends WebBaseTest {
         dynamicLoadingElementRenderedAfterTheFactPage.isLoaded();
         dynamicLoadingElementRenderedAfterTheFactPage.getStartButton().click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(DriverManager.get(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(dynamicLoadingHiddenElementPage.getUnhiddenText()));
 
         assertEquals(dynamicLoadingHiddenElementPage.getUnhiddenText().getText(), expectedUnhiddenText);

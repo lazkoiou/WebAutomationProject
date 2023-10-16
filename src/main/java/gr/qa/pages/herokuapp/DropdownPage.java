@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
@@ -35,7 +36,7 @@ public class DropdownPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.DROPDOWN.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.DROPDOWN.getUrl());
     }
 
     public void isLoaded() {

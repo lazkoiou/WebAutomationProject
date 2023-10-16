@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp.framePages;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,12 +24,12 @@ public class IFramePage extends BasePage {
     }
 
     public void load() {
-        driver.get("https://the-internet.herokuapp.com/iframe");
+        DriverManager.get().get("https://the-internet.herokuapp.com/iframe");
     }
 
     public void isLoaded() {
-        if (!driver.getCurrentUrl().contains("/iframe")) {
-            logger.error("Current url is: " + driver.getCurrentUrl());
+        if (!DriverManager.get().getCurrentUrl().contains("/iframe")) {
+            logger.error("Current url is: " + DriverManager.get().getCurrentUrl());
             throw new Error("Page is not loaded!");
         }
     }

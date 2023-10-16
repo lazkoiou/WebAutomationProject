@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp.framePages;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
@@ -22,11 +23,11 @@ public class FrameInitialPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.FRAMES.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.FRAMES.getUrl());
     }
 
     public void isLoaded() {
-        if (!driver.getCurrentUrl().contains(HerokuTestPagesEnum.FRAMES.getUrl())) {
+        if (!DriverManager.get().getCurrentUrl().contains(HerokuTestPagesEnum.FRAMES.getUrl())) {
             throw new Error("Page is not loaded!");
         }
     }

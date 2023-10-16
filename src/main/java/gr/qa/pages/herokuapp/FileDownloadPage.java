@@ -1,5 +1,6 @@
 package gr.qa.pages.herokuapp;
 
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,7 @@ public class FileDownloadPage extends BasePage {
     }
 
     public void load() {
-        driver.get(HerokuTestPagesEnum.FILE_DOWNLOAD.getUrl());
+        DriverManager.get().get(HerokuTestPagesEnum.FILE_DOWNLOAD.getUrl());
     }
 
     public void isLoaded() {

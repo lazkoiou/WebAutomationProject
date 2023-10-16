@@ -23,7 +23,7 @@ public class ScreenshotTool {
      * @return : the screenshot in bytes
      */
     public static byte[] getScreenshot(String testName) {
-        if (DriverManager.driver.get() != null) {
+        if (DriverManager.get() != null) {
             SimpleDateFormat sdfImage = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             SimpleDateFormat sdfFolder = new SimpleDateFormat("yyyy_MM_dd");
             String formattedDateImage = sdfImage.format(new Date());
@@ -31,7 +31,7 @@ public class ScreenshotTool {
             String path = "src/main/resources/images/";
             String namePrefix = "images_";
             String filepath = path + namePrefix + formattedDateFolder + "/" + testName + "_" + formattedDateImage + ".png";
-            File src = ((TakesScreenshot) DriverManager.driver.get()).getScreenshotAs(OutputType.FILE);
+            File src = ((TakesScreenshot) DriverManager.get()).getScreenshotAs(OutputType.FILE);
             logger.info("Screenshot taken: " + filepath);
             try {
                 FileUtils.copyFile(src, new File(filepath));

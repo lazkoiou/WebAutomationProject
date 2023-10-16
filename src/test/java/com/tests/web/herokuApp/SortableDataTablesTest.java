@@ -3,10 +3,8 @@ package com.tests.web.herokuApp;
 import com.tests.web.WebBaseTest;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.SortableDataTablesPage;
-import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -25,7 +23,7 @@ public class SortableDataTablesTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        sortableDataTablesPage.setDriverInitElements(driver);
+        sortableDataTablesPage.initializeElements();
         sortableDataTablesPage.load();
         sortableDataTablesPage.isLoaded();
     }

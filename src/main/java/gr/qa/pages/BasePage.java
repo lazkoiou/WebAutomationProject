@@ -1,5 +1,6 @@
 package gr.qa.pages;
 
+import gr.qa.helperClasses.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -15,17 +16,14 @@ import java.time.Duration;
  */
 public abstract class BasePage extends LoadableComponent<BasePage> {
 
-    public static WebDriver driver;
     private WebDriverWait wait;
 
     /**
      * Constructor
-     * @param driver: webdriver
      */
-    public void setDriverInitElements(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
+    public void initializeElements() {
+        wait = new WebDriverWait(DriverManager.get(), Duration.ofSeconds(10));
+        PageFactory.initElements(DriverManager.get(), this);
     }
 
     /**

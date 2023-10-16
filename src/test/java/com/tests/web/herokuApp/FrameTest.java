@@ -1,14 +1,13 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
-import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
 import gr.qa.pages.herokuapp.framePages.FrameInitialPage;
 import gr.qa.pages.herokuapp.framePages.NestedFramesPage;
 import gr.qa.pages.herokuapp.framePages.IFramePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.assertEquals;
@@ -25,9 +24,9 @@ public class FrameTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        frameInitialPage.setDriverInitElements(driver);
-        nestedFramesPage.setDriverInitElements(driver);
-        iFramePage.setDriverInitElements(driver);
+        frameInitialPage.initializeElements();
+        nestedFramesPage.initializeElements();
+        iFramePage.initializeElements();
     }
 
     @AfterClass
@@ -73,7 +72,7 @@ public class FrameTest extends WebBaseTest {
     public void iFrameTest() {
         frameInitialPage.getiFrameLink().click();
         iFramePage.isLoaded();
-        driver.switchTo().frame("mce_0_ifr");
+        DriverManager.get().switchTo().frame("mce_0_ifr");
         String beforeText = iFramePage.getEditorText().getText();
         iFramePage.inputTextIntoIFrameEditor("New content is here!");
         String afterText = iFramePage.getEditorText().getText();

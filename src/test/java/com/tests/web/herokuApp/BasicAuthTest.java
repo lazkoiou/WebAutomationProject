@@ -1,6 +1,7 @@
 package com.tests.web.herokuApp;
 
 import com.tests.web.WebBaseTest;
+import gr.qa.helperClasses.DriverManager;
 import gr.qa.helperClasses.listeners.TestMethodCapture;
 import gr.qa.pages.herokuapp.BasicAuthPage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
@@ -16,9 +17,8 @@ import static org.testng.Assert.assertEquals;
 @Listeners(TestMethodCapture.class)
 public class BasicAuthTest extends WebBaseTest {
 
-    private final static Logger logger = LogManager.getLogger(NotificationMessageRetryActionsTest.class);
+    private final static Logger logger = LogManager.getLogger(BasicAuthTest.class);
 
-    String basicAuthUrl;
     BasicAuthPage basicAuthPage = new BasicAuthPage();
     String expectedMessage = "Congratulations! You must have the proper credentials.";
     String username = "admin";
@@ -26,7 +26,7 @@ public class BasicAuthTest extends WebBaseTest {
 
     @BeforeClass
     public void testSetup() {
-        basicAuthPage.setDriverInitElements(driver);
+        basicAuthPage.initializeElements();
         basicAuthPage.load();
         basicAuthPage.isLoaded();
     }
@@ -39,7 +39,7 @@ public class BasicAuthTest extends WebBaseTest {
     @Test
     public void basicAuthByHttpPrefix() {
         String urlWithLoginPrefix = HerokuTestPagesEnum.BASIC_AUTH.getUrl().replace("https://", "http://" + username + ":" + password + "@");
-        driver.get(urlWithLoginPrefix);
+        DriverManager.get().get(urlWithLoginPrefix);
         assertEquals(basicAuthPage.getPageMessage().getText(), expectedMessage);
     }
 
