@@ -3,6 +3,7 @@ package gr.qa.pages.herokuapp;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class SortableDataTablesPage extends BasePage {
 
     private final static Logger logger = LogManager.getLogger(SortableDataTablesPage.class);
@@ -25,14 +27,6 @@ public class SortableDataTablesPage extends BasePage {
 
     @FindBy(css = "#table1 tbody tr td:nth-of-type(4)")
     private List<WebElement> dueColumnValues;
-
-    public WebElement getDueColumnHeader() {
-        return dueColumnHeader;
-    }
-
-    public List<WebElement> getDueColumnValues() {
-        return dueColumnValues;
-    }
 
     public void load() {
         DriverManager.get().get(HerokuTestPagesEnum.SORTABLE_DATA_TABLES.getUrl());

@@ -3,6 +3,7 @@ package gr.qa.pages.herokuapp;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class HoverPage extends BasePage {
 
     private final static Logger logger = LogManager.getLogger(HoverPage.class);
@@ -22,10 +24,6 @@ public class HoverPage extends BasePage {
 
     @FindBy(css = ".example .figure")
     private List<WebElement> userProfileFigures;
-
-    public List<WebElement> getUserProfileFigures() {
-        return userProfileFigures;
-    }
 
     /**
      * Iteratively hovers over the profile user image so that the username appears.

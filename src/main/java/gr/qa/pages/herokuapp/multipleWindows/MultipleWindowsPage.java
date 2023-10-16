@@ -3,11 +3,13 @@ package gr.qa.pages.herokuapp.multipleWindows;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Set;
 
+@Getter
 public class MultipleWindowsPage extends BasePage {
 
     @FindBy(css = "#content .example h3")
@@ -15,10 +17,6 @@ public class MultipleWindowsPage extends BasePage {
 
     @FindBy(css = "#content .example a")
     private WebElement openNewWindowButton;
-
-    public WebElement getOpenNewWindowButton() {
-        return openNewWindowButton;
-    }
 
     public void load() {
         DriverManager.get().get(HerokuTestPagesEnum.MULTIPLE_WINDOWS.getUrl());

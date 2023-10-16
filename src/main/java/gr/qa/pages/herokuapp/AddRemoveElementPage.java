@@ -3,9 +3,11 @@ package gr.qa.pages.herokuapp;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class AddRemoveElementPage extends BasePage {
 
     @FindBy(css = "#content h3")
@@ -16,14 +18,6 @@ public class AddRemoveElementPage extends BasePage {
 
     @FindBy(css = "#elements .added-manually")
     private WebElement deleteElementButton;
-
-    public WebElement getAddElementButton() {
-        return addElementButton;
-    }
-
-    public WebElement getDeleteElementButton() {
-        return deleteElementButton;
-    }
 
     public void load() {
         DriverManager.get().get(HerokuTestPagesEnum.ADD_REMOVE_ELEMENTS.getUrl());

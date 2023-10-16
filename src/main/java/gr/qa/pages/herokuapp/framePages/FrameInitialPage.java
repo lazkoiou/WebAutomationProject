@@ -3,9 +3,11 @@ package gr.qa.pages.herokuapp.framePages;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class FrameInitialPage extends BasePage {
 
     @FindBy(linkText = "Nested Frames")
@@ -13,14 +15,6 @@ public class FrameInitialPage extends BasePage {
 
     @FindBy(linkText = "iFrame")
     private WebElement iFrameLink;
-
-    public WebElement getNestedFramesLink() {
-        return nestedFramesLink;
-    }
-
-    public WebElement getiFrameLink() {
-        return iFrameLink;
-    }
 
     public void load() {
         DriverManager.get().get(HerokuTestPagesEnum.FRAMES.getUrl());

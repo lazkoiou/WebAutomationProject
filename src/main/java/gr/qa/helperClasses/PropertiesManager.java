@@ -16,7 +16,7 @@ public class PropertiesManager {
     private final static Logger logger = LogManager.getLogger(PropertiesManager.class);
 
     public static Properties properties = new Properties();
-    public static String environment;
+    private static String environment;
 
 
     /**
@@ -66,7 +66,7 @@ public class PropertiesManager {
         if (System.getenv("environment") != null) { // if we pass it from Jenkins
             return System.getenv("environment");
         }
-        else { // we run it locally and we pass it through the xml
+        else { // we run it locally and pass it through the xml
             ITestContext iTestContext = Reporter.getCurrentTestResult().getTestContext();
             return iTestContext.getSuite().getParameter("environment");
         }

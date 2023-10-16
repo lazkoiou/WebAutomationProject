@@ -1,8 +1,11 @@
 package gr.qa.api.PetStore.DTOs;
 
+import lombok.Data;
+
 /**
  * DTO for tags
  */
+@Data
 public class TagsDTO {
 
     int id;

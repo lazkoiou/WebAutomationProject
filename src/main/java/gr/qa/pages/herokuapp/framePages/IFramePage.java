@@ -2,21 +2,19 @@ package gr.qa.pages.herokuapp.framePages;
 
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
+import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class IFramePage extends BasePage {
 
     private final static Logger logger = LogManager.getLogger(IFramePage.class);
 
     @FindBy(css = "#tinymce")
     private WebElement editorText;
-
-    public WebElement getEditorText() {
-        return editorText;
-    }
 
     public void inputTextIntoIFrameEditor(String text) {
         editorText.clear();

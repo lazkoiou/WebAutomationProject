@@ -3,9 +3,11 @@ package gr.qa.pages.herokuapp;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class FileUploadPage extends BasePage {
 
     @FindBy(css = "#content .example h3") // this changes to the success message after successful upload
@@ -19,18 +21,6 @@ public class FileUploadPage extends BasePage {
 
     @FindBy(css = ".example h3")
     private WebElement successMessage;
-
-    public WebElement getBrowseFile() {
-        return browseFile;
-    }
-
-    public WebElement getFileSubmitButton() {
-        return fileSubmitButton;
-    }
-
-    public WebElement getSuccessMessage() {
-        return successMessage;
-    }
 
     public void load() {
         DriverManager.get().get(HerokuTestPagesEnum.FILE_UPLOAD.getUrl());

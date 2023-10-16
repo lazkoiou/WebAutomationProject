@@ -3,9 +3,11 @@ package gr.qa.pages.herokuapp.dynamicLoadingPages;
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
 import gr.qa.pages.herokuapp.enums.HerokuTestPagesEnum;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class DynamicLoadingPage extends BasePage {
 
     @FindBy(css = "#content .example h3")
@@ -16,14 +18,6 @@ public class DynamicLoadingPage extends BasePage {
 
     @FindBy(linkText = "Example 2: Element rendered after the fact")
     private WebElement elementRenderedAfterwardsExampleLink;
-
-    public WebElement getHiddenElementExampleLink() {
-        return hiddenElementExampleLink;
-    }
-
-    public WebElement getElementRenderedAfterwardsExampleLink() {
-        return elementRenderedAfterwardsExampleLink;
-    }
 
     public void load() {
         DriverManager.get().get(HerokuTestPagesEnum.DYNAMIC_LOADING.getUrl());

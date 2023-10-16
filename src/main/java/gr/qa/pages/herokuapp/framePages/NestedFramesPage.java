@@ -2,17 +2,15 @@ package gr.qa.pages.herokuapp.framePages;
 
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class NestedFramesPage extends BasePage {
 
     @FindBy(css = "body")
     private WebElement frameHeader;
-
-    public WebElement getFrameHeader() {
-        return frameHeader;
-    }
 
     public String findTopLeftFrameHeader() {
         DriverManager.get().switchTo().frame("frame-top");

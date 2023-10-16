@@ -2,9 +2,11 @@ package gr.qa.pages.herokuapp;
 
 import gr.qa.helperClasses.DriverManager;
 import gr.qa.pages.BasePage;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+@Getter
 public class HerokuHomepage extends BasePage {
 
     @FindBy(css = "#content .heading")

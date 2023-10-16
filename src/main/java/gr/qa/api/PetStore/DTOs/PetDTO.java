@@ -1,5 +1,6 @@
 package gr.qa.api.PetStore.DTOs;
 
+import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +10,7 @@ import java.util.Random;
  * This is a DTO class that will be used to in PetApiController
  * POST https://petstore.swagger.io/#/pet/
  */
+@Data
 public class PetDTO {
 
     private final static Logger logger = LogManager.getLogger(PetDTO.class);
@@ -26,52 +28,6 @@ public class PetDTO {
         this.name = name;
         this.photoUrls = photoUrls;
         this.tagsDTOs = tagsDTOs;
-        this.status = status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) { this.id = id; }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String[] getPhotoUrls() {
-        return photoUrls;
-    }
-
-    public void setPhotoUrls(String[] photoUrls) {
-        this.photoUrls = photoUrls;
-    }
-
-    public TagsDTO[] getTagsDTOs() {
-        return tagsDTOs;
-    }
-
-    public void setTagsDTOs(TagsDTO[] tagsDTOs) {
-        this.tagsDTOs = tagsDTOs;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
         this.status = status;
     }
 

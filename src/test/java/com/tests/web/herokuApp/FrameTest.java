@@ -70,7 +70,7 @@ public class FrameTest extends WebBaseTest {
     
     @Test(priority = 2)
     public void iFrameTest() {
-        frameInitialPage.getiFrameLink().click();
+        frameInitialPage.getIFrameLink().click();
         iFramePage.isLoaded();
         DriverManager.get().switchTo().frame("mce_0_ifr");
         String beforeText = iFramePage.getEditorText().getText();
