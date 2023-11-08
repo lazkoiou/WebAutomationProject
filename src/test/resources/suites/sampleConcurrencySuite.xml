@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Sample Concurrency Tests Suite">
+
+    <listeners>
+        <listener class-name="gr.qa.helperClasses.listeners.TestListener"/>
+    </listeners>
+
+    <!-- Staging or production run-->
+    <parameter name="environment" value="production"/>
+    <!--parameter name="environment" value="staging"/-->
+
+    <test name="Concurrency test with multiple threads and a thread pool">
+        <classes>
+            <class name="com.tests.various.executorServiceExample.CallablesWithExecutorServiceTests"/>
+        </classes>
+    </test>
+</suite>
